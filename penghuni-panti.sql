@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jul 16, 2018 at 11:48 AM
--- Server version: 5.7.22-0ubuntu0.16.04.1
--- PHP Version: 7.0.30-0ubuntu0.16.04.1
+-- Host: 127.0.0.1
+-- Generation Time: Aug 12, 2018 at 05:48 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 5.6.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,6 +21,36 @@ SET time_zone = "+00:00";
 --
 -- Database: `penghuni-panti`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `alat_bantu`
+--
+
+CREATE TABLE `alat_bantu` (
+  `id` int(11) NOT NULL,
+  `nomor_identifikasi` varchar(25) NOT NULL,
+  `alat_bantu` varchar(705) NOT NULL,
+  `alat_bantu_diperbaiki` varchar(75) NOT NULL,
+  `tanggal_diresepkan` date NOT NULL,
+  `jadwal_monitoring` date NOT NULL,
+  `mendapat_alat_bantu?` enum('ya','tidak') NOT NULL,
+  `tanggal_dapat_alat_bantu` date NOT NULL,
+  `pembayaran_alat_bantu` enum('Bayar 100%','Bayar ?50%','Bayar <50%','Tidak bayar') NOT NULL,
+  `asal_alat_bantu` varchar(100) NOT NULL,
+  `cara_pemberian_alat_bantu` enum('Telepon/text','Field visit','At base') NOT NULL,
+  `tanggal_pemberian_alat` date NOT NULL,
+  `keterangan_monitoring` varchar(350) NOT NULL,
+  `durasi_penggunaan_alat_bantu` enum('<6 bulan','6 bulan-1 tahun','>1 tahun','Tidak menggunakan') NOT NULL,
+  `alasan_tidak_menggunakan` varchar(350) NOT NULL,
+  `alasan_lain` varchar(200) NOT NULL,
+  `cara_monitoring` enum('Telepon/text','Field visit','At base') NOT NULL,
+  `tanggal_monitoring` int(11) NOT NULL,
+  `petugas` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -49,8 +81,9 @@ CREATE TABLE `asessmen` (
 --
 
 INSERT INTO `asessmen` (`id`, `tunanetra`, `tunarungu`, `tunagrahita`, `tunadaksa`, `perilaku`, `epilepsi`, `disability`, `komunitas_difabel`, `co`, `identifikasi_kader`, `tinggal_asrama`, `biodata_id`, `created_at`, `deleted_at`) VALUES
-(2, '{"jenis":"blind","tanggal":"2018-07-16","tempat":"outreach"}', '{"jenis":"gangguan_bicara","tanggal":"2018-07-16","tempat":"outreach"}', '{"jenis":"sedang","tanggal":"2018-07-16","tempat":"outreach"}', '{"jenis":"CTEV","tanggal":"2018-07-17","tempat":"outreach","lain":"d"}', '{"jenis":"Autis kanner","tanggal":"2018-07-16","tempat":"outreach","lain":"d"}', '{"jenis":"Pengobatan","tanggal":"2018-07-16","tempat":"outreach"}', 'Psycho-social disabilities', 'd', 'd', 'e', 'ya', 1, '2018-07-15 20:22:15', '2018-07-15 17:00:00'),
-(5, '{"jenis":"low_vision","tanggal":"2018-07-17","tempat":"at_base"}', '{"jenis":"gangguan_bicara","tanggal":"2018-07-24","tempat":"at_base"}', '{"jenis":"sedang","tanggal":"2018-07-18","tempat":"at_base"}', '{"jenis":"Kaki X","tanggal":"2018-07-03","tempat":"at_base","lain":"sdfdf"}', '{"jenis":"Agresif","tanggal":"2018-07-19","tempat":"at_base","lain":"dd"}', '{"jenis":"Pengobatan","tanggal":"2018-07-18","tempat":"at_base"}', 'Psycho-social disabilities', 'dd', 'dd', 'dddd', 'tidak', 2, '2018-07-15 22:49:34', NULL);
+(2, '{\"jenis\":\"blind\",\"tanggal\":\"2018-07-16\",\"tempat\":\"outreach\"}', '{\"jenis\":\"gangguan_bicara\",\"tanggal\":\"2018-07-16\",\"tempat\":\"outreach\"}', '{\"jenis\":\"sedang\",\"tanggal\":\"2018-07-16\",\"tempat\":\"outreach\"}', '{\"jenis\":\"CTEV\",\"tanggal\":\"2018-07-17\",\"tempat\":\"outreach\",\"lain\":\"d\"}', '{\"jenis\":\"Autis kanner\",\"tanggal\":\"2018-07-16\",\"tempat\":\"outreach\",\"lain\":\"d\"}', '{\"jenis\":\"Pengobatan\",\"tanggal\":\"2018-07-16\",\"tempat\":\"outreach\"}', 'Psycho-social disabilities', 'd', 'd', 'e', 'ya', 1, '2018-07-15 20:22:15', '2018-07-15 17:00:00'),
+(5, '{\"jenis\":\"low_vision\",\"tanggal\":\"2018-07-17\",\"tempat\":\"at_base\"}', '{\"jenis\":\"gangguan_bicara\",\"tanggal\":\"2018-07-24\",\"tempat\":\"at_base\"}', '{\"jenis\":\"sedang\",\"tanggal\":\"2018-07-18\",\"tempat\":\"at_base\"}', '{\"jenis\":\"Kaki X\",\"tanggal\":\"2018-07-03\",\"tempat\":\"at_base\",\"lain\":\"sdfdf\"}', '{\"jenis\":\"Agresif\",\"tanggal\":\"2018-07-19\",\"tempat\":\"at_base\",\"lain\":\"dd\"}', '{\"jenis\":\"Pengobatan\",\"tanggal\":\"2018-07-18\",\"tempat\":\"at_base\"}', 'Psycho-social disabilities', 'dd', 'dd', 'dddd', 'tidak', 2, '2018-07-15 22:49:34', NULL),
+(6, '{\"jenis\":\"blind\",\"tanggal\":\"2018-07-18\",\"tempat\":\"outreach\"}', '{\"jenis\":\"gangguan_bicara\",\"tanggal\":\"2018-07-10\",\"tempat\":\"outreach\"}', '{\"jenis\":\"normal\",\"tanggal\":\"2018-07-11\",\"tempat\":\"outreach\"}', '{\"jenis\":\"Kaki O\",\"tanggal\":\"2018-07-05\",\"tempat\":\"outreach\",\"lain\":\"d\"}', '{\"jenis\":\"ADHD\",\"tanggal\":\"2018-07-10\",\"tempat\":\"outreach\",\"lain\":\"dd\"}', '{\"jenis\":\"Putus obat\",\"tanggal\":\"2018-07-11\",\"tempat\":\"at_base\"}', 'Deafblindness', 'e', 'd', 'd', 'tidak', 3, '2018-07-16 06:56:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -94,8 +127,9 @@ CREATE TABLE `biodata` (
 --
 
 INSERT INTO `biodata` (`id`, `nomor_identifikasi`, `id_klien_lv`, `nama`, `jenis_kelamin`, `akta_kelahiran`, `ktp`, `no_kk`, `nik`, `alamat`, `rt`, `rw`, `kota`, `kec`, `kelurahan`, `telp_rumah`, `hp1`, `hp2`, `asuransi_kesehatan`, `sumber_informasi`, `sponsor`, `detail_pendidikan`, `detail_profesi`, `detail_ayah`, `detail_ibu`, `detail_wali`, `created_at`, `deleted_at`) VALUES
-(1, '1234556', '11221', 'ddd', 'pria', 'ada', '', 'd', 'd', 'd', 'd', 'd', 'Kota Malang', 'Lowokwaru', 'Tunjungsekar', '08886', '{"nomor":"d","pemilik":"d"}', '{"nomor":"d","pemilik":"d"}', '0', 'd', 'd', '{"pendidikan":"paud_tk","kelas":"d","nama_sekolah":"d","no_telp_sekolah":"d"}', '{"pekerjaan":"d","alamat_kerja":"d","telp_kerja":"d","pendidikan_kerja":"sd","keterampilan":"","minat":""}', '{"nama_ayah":"","pekerjaan_ayah":"","pendidikan_ayah":"sd"}', '{"nama_ibu":"","pekerjaan_ibu":"","pendidikan_ibu":"sd"}', '{"nama_wali":"","pekerjaan_wali":"","pendidikan_wali":"sd"}', '2018-07-15 12:33:00', '2018-07-15 17:00:00'),
-(2, 'a', 'a', 'd', 'wanita', 'tidak ada', 'tidak ada', 'd', 'd', 'd', 'd', 'd', 'Kab. Malang', 'Lowokwaru', 'Tunjungsekar', 'd', '{"nomor":"d","pemilik":"d"}', '{"nomor":"d","pemilik":"d"}', 'BPJS', 'd', 'd', '{"pendidikan":"putus_sekolah","kelas":"d","nama_sekolah":"d","no_telp_sekolah":"d"}', '{"pekerjaan":"d","alamat_kerja":"d","telp_kerja":"d","pendidikan_kerja":"diploma","keterampilan":"d","minat":"d"}', '{"nama_ayah":"d","pekerjaan_ayah":"d","pendidikan_ayah":"sma"}', '{"nama_ibu":"d","pekerjaan_ibu":"d","pendidikan_ibu":"s1"}', '{"nama_wali":"d","pekerjaan_wali":"d","pendidikan_wali":"s2_s3"}', '2018-07-15 12:36:09', NULL);
+(1, '1234556', '11221', 'ddd', 'pria', 'ada', '', 'd', 'd', 'd', 'd', 'd', 'Kota Malang', 'Lowokwaru', 'Tunjungsekar', '08886', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', '0', 'd', 'd', '{\"pendidikan\":\"paud_tk\",\"kelas\":\"d\",\"nama_sekolah\":\"d\",\"no_telp_sekolah\":\"d\"}', '{\"pekerjaan\":\"d\",\"alamat_kerja\":\"d\",\"telp_kerja\":\"d\",\"pendidikan_kerja\":\"sd\",\"keterampilan\":\"\",\"minat\":\"\"}', '{\"nama_ayah\":\"\",\"pekerjaan_ayah\":\"\",\"pendidikan_ayah\":\"sd\"}', '{\"nama_ibu\":\"\",\"pekerjaan_ibu\":\"\",\"pendidikan_ibu\":\"sd\"}', '{\"nama_wali\":\"\",\"pekerjaan_wali\":\"\",\"pendidikan_wali\":\"sd\"}', '2018-07-15 12:33:00', '2018-07-15 17:00:00'),
+(2, 'a', 'a', 'd', 'wanita', 'tidak ada', 'tidak ada', 'd', 'd', 'd', 'd', 'd', 'Kab. Malang', 'Lowokwaru', 'Tunjungsekar', 'd', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', 'BPJS', 'd', 'd', '{\"pendidikan\":\"putus_sekolah\",\"kelas\":\"d\",\"nama_sekolah\":\"d\",\"no_telp_sekolah\":\"d\"}', '{\"pekerjaan\":\"d\",\"alamat_kerja\":\"d\",\"telp_kerja\":\"d\",\"pendidikan_kerja\":\"diploma\",\"keterampilan\":\"d\",\"minat\":\"d\"}', '{\"nama_ayah\":\"d\",\"pekerjaan_ayah\":\"d\",\"pendidikan_ayah\":\"sma\"}', '{\"nama_ibu\":\"d\",\"pekerjaan_ibu\":\"d\",\"pendidikan_ibu\":\"s1\"}', '{\"nama_wali\":\"d\",\"pekerjaan_wali\":\"d\",\"pendidikan_wali\":\"s2_s3\"}', '2018-07-15 12:36:09', NULL),
+(3, 'd', 'd', 'd', 'pria', 'ada', '', 'd', 'd', 'd', 'd', 'd', 'Kota Malang', 'Lowokwaru', 'Tunjungsekar', 'd', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', '0', 'd', 'd', '{\"pendidikan\":\"paud_tk\",\"kelas\":\"d\",\"nama_sekolah\":\"d\",\"no_telp_sekolah\":\"d\"}', '{\"pekerjaan\":\"d\",\"alamat_kerja\":\"d\",\"telp_kerja\":\"d\",\"pendidikan_kerja\":\"sd\",\"keterampilan\":\"d\",\"minat\":\"d\"}', '{\"nama_ayah\":\"d\",\"pekerjaan_ayah\":\"d\",\"pendidikan_ayah\":\"sd\"}', '{\"nama_ibu\":\"d\",\"pekerjaan_ibu\":\"d\",\"pendidikan_ibu\":\"sd\"}', '{\"nama_wali\":\"d\",\"pekerjaan_wali\":\"d\",\"pendidikan_wali\":\"sd\"}', '2018-07-16 06:28:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -124,6 +158,12 @@ INSERT INTO `member` (`id_member`, `username`, `nidn`, `nama_lengkap`, `email`, 
 --
 
 --
+-- Indexes for table `alat_bantu`
+--
+ALTER TABLE `alat_bantu`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `asessmen`
 --
 ALTER TABLE `asessmen`
@@ -146,15 +186,24 @@ ALTER TABLE `member`
 --
 
 --
+-- AUTO_INCREMENT for table `alat_bantu`
+--
+ALTER TABLE `alat_bantu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `asessmen`
 --
 ALTER TABLE `asessmen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `biodata`
 --
 ALTER TABLE `biodata`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
