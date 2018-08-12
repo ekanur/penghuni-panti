@@ -40,14 +40,14 @@ include('config/app.php');
 				include('page/client/asessmen.php');
 				break;
 			case 'data-klien':
-				include("/page/client/data_klien.php");
+				include("page/client/data_klien.php");
 				break;
 			case 'alat-bantu':
-				include("/page/alat_bantu/index.php");
+				include("page/alat_bantu/index.php");
 				break;
 
 			case 'tambah-alat-bantu':
-				include("/page/alat_bantu/tambah.php");
+				include("page/alat_bantu/tambah.php");
 				break;
 			default:
 				include('page/beranda.php');
