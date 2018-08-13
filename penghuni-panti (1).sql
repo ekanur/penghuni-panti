@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2018 at 05:48 AM
+-- Generation Time: Aug 13, 2018 at 05:28 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -35,9 +35,9 @@ CREATE TABLE `alat_bantu` (
   `alat_bantu_diperbaiki` varchar(75) NOT NULL,
   `tanggal_diresepkan` date NOT NULL,
   `jadwal_monitoring` date NOT NULL,
-  `mendapat_alat_bantu?` enum('ya','tidak') NOT NULL,
+  `mendapat_alat_bantu` enum('ya','tidak') NOT NULL,
   `tanggal_dapat_alat_bantu` date NOT NULL,
-  `pembayaran_alat_bantu` enum('Bayar 100%','Bayar ?50%','Bayar <50%','Tidak bayar') NOT NULL,
+  `pembayaran_alat_bantu` enum('Bayar 100%','Bayar >50%','Bayar <50%','Tidak bayar') NOT NULL,
   `asal_alat_bantu` varchar(100) NOT NULL,
   `cara_pemberian_alat_bantu` enum('Telepon/text','Field visit','At base') NOT NULL,
   `tanggal_pemberian_alat` date NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `alat_bantu` (
   `alasan_tidak_menggunakan` varchar(350) NOT NULL,
   `alasan_lain` varchar(200) NOT NULL,
   `cara_monitoring` enum('Telepon/text','Field visit','At base') NOT NULL,
-  `tanggal_monitoring` int(11) NOT NULL,
+  `tanggal_monitoring` date NOT NULL,
   `petugas` varchar(50) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -128,8 +128,8 @@ CREATE TABLE `biodata` (
 
 INSERT INTO `biodata` (`id`, `nomor_identifikasi`, `id_klien_lv`, `nama`, `jenis_kelamin`, `akta_kelahiran`, `ktp`, `no_kk`, `nik`, `alamat`, `rt`, `rw`, `kota`, `kec`, `kelurahan`, `telp_rumah`, `hp1`, `hp2`, `asuransi_kesehatan`, `sumber_informasi`, `sponsor`, `detail_pendidikan`, `detail_profesi`, `detail_ayah`, `detail_ibu`, `detail_wali`, `created_at`, `deleted_at`) VALUES
 (1, '1234556', '11221', 'ddd', 'pria', 'ada', '', 'd', 'd', 'd', 'd', 'd', 'Kota Malang', 'Lowokwaru', 'Tunjungsekar', '08886', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', '0', 'd', 'd', '{\"pendidikan\":\"paud_tk\",\"kelas\":\"d\",\"nama_sekolah\":\"d\",\"no_telp_sekolah\":\"d\"}', '{\"pekerjaan\":\"d\",\"alamat_kerja\":\"d\",\"telp_kerja\":\"d\",\"pendidikan_kerja\":\"sd\",\"keterampilan\":\"\",\"minat\":\"\"}', '{\"nama_ayah\":\"\",\"pekerjaan_ayah\":\"\",\"pendidikan_ayah\":\"sd\"}', '{\"nama_ibu\":\"\",\"pekerjaan_ibu\":\"\",\"pendidikan_ibu\":\"sd\"}', '{\"nama_wali\":\"\",\"pekerjaan_wali\":\"\",\"pendidikan_wali\":\"sd\"}', '2018-07-15 12:33:00', '2018-07-15 17:00:00'),
-(2, 'a', 'a', 'd', 'wanita', 'tidak ada', 'tidak ada', 'd', 'd', 'd', 'd', 'd', 'Kab. Malang', 'Lowokwaru', 'Tunjungsekar', 'd', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', 'BPJS', 'd', 'd', '{\"pendidikan\":\"putus_sekolah\",\"kelas\":\"d\",\"nama_sekolah\":\"d\",\"no_telp_sekolah\":\"d\"}', '{\"pekerjaan\":\"d\",\"alamat_kerja\":\"d\",\"telp_kerja\":\"d\",\"pendidikan_kerja\":\"diploma\",\"keterampilan\":\"d\",\"minat\":\"d\"}', '{\"nama_ayah\":\"d\",\"pekerjaan_ayah\":\"d\",\"pendidikan_ayah\":\"sma\"}', '{\"nama_ibu\":\"d\",\"pekerjaan_ibu\":\"d\",\"pendidikan_ibu\":\"s1\"}', '{\"nama_wali\":\"d\",\"pekerjaan_wali\":\"d\",\"pendidikan_wali\":\"s2_s3\"}', '2018-07-15 12:36:09', NULL),
-(3, 'd', 'd', 'd', 'pria', 'ada', '', 'd', 'd', 'd', 'd', 'd', 'Kota Malang', 'Lowokwaru', 'Tunjungsekar', 'd', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', '0', 'd', 'd', '{\"pendidikan\":\"paud_tk\",\"kelas\":\"d\",\"nama_sekolah\":\"d\",\"no_telp_sekolah\":\"d\"}', '{\"pekerjaan\":\"d\",\"alamat_kerja\":\"d\",\"telp_kerja\":\"d\",\"pendidikan_kerja\":\"sd\",\"keterampilan\":\"d\",\"minat\":\"d\"}', '{\"nama_ayah\":\"d\",\"pekerjaan_ayah\":\"d\",\"pendidikan_ayah\":\"sd\"}', '{\"nama_ibu\":\"d\",\"pekerjaan_ibu\":\"d\",\"pendidikan_ibu\":\"sd\"}', '{\"nama_wali\":\"d\",\"pekerjaan_wali\":\"d\",\"pendidikan_wali\":\"sd\"}', '2018-07-16 06:28:52', NULL);
+(2, '12345567', 'a', 'ani', 'wanita', 'tidak ada', 'tidak ada', 'd', 'd', 'd', 'd', 'd', 'Kab. Malang', 'Lowokwaru', 'Tunjungsekar', 'd', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', 'BPJS', 'd', 'd', '{\"pendidikan\":\"putus_sekolah\",\"kelas\":\"d\",\"nama_sekolah\":\"d\",\"no_telp_sekolah\":\"d\"}', '{\"pekerjaan\":\"d\",\"alamat_kerja\":\"d\",\"telp_kerja\":\"d\",\"pendidikan_kerja\":\"diploma\",\"keterampilan\":\"d\",\"minat\":\"d\"}', '{\"nama_ayah\":\"d\",\"pekerjaan_ayah\":\"d\",\"pendidikan_ayah\":\"sma\"}', '{\"nama_ibu\":\"d\",\"pekerjaan_ibu\":\"d\",\"pendidikan_ibu\":\"s1\"}', '{\"nama_wali\":\"d\",\"pekerjaan_wali\":\"d\",\"pendidikan_wali\":\"s2_s3\"}', '2018-07-15 12:36:09', NULL),
+(3, '12345568', 'd', 'rudi', 'pria', 'ada', '', 'd', 'd', 'd', 'd', 'd', 'Kota Malang', 'Lowokwaru', 'Tunjungsekar', 'd', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', '{\"nomor\":\"d\",\"pemilik\":\"d\"}', '0', 'd', 'd', '{\"pendidikan\":\"paud_tk\",\"kelas\":\"d\",\"nama_sekolah\":\"d\",\"no_telp_sekolah\":\"d\"}', '{\"pekerjaan\":\"d\",\"alamat_kerja\":\"d\",\"telp_kerja\":\"d\",\"pendidikan_kerja\":\"sd\",\"keterampilan\":\"d\",\"minat\":\"d\"}', '{\"nama_ayah\":\"d\",\"pekerjaan_ayah\":\"d\",\"pendidikan_ayah\":\"sd\"}', '{\"nama_ibu\":\"d\",\"pekerjaan_ibu\":\"d\",\"pendidikan_ibu\":\"sd\"}', '{\"nama_wali\":\"d\",\"pekerjaan_wali\":\"d\",\"pendidikan_wali\":\"sd\"}', '2018-07-16 06:28:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -173,7 +173,8 @@ ALTER TABLE `asessmen`
 -- Indexes for table `biodata`
 --
 ALTER TABLE `biodata`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nomor_identifikasi` (`nomor_identifikasi`) USING BTREE;
 
 --
 -- Indexes for table `member`
