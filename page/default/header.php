@@ -74,6 +74,12 @@
                     <p>Alat Bantu</p>
                 </a>
             </li>
+            <li>
+                <a href="<?php echo $app_url ?>/?act=intervensi">
+                    <i class="pe-7s-headphones"></i>
+                    <p>Intervensi</p>
+                </a>
+            </li>
             
             
         </ul>

@@ -18,10 +18,10 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
 
 
               <div class="header">
-                <h4 class="title">Tambah Alat Bantu</h4>
+                <h4 class="title">Tambah Intervensi</h4>
               </div>
               <div class="content">
-                <form method="POST" action="page/alat_bantu/simpan.php"  class="" id="tambah_user">
+                <form method="POST" action="page/intervensi/simpan.php"  class="" id="tambah_user">
                   <div class="row">
                     <div class="col-md-12">
 
@@ -35,7 +35,7 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                               <img class="avatar border-gray" src="http://localhost/penghuni-panti/uploads/user/default.jpeg" alt="Pilih file foto profil">
 
                               <h6 class="title text-center" style="margin-top: 10px">Upload foto</h6> -->
-                              <div class="form-group">
+                             <!-- <div class="form-group">
                                 <label>Nomor Identifikasi <span class="text-danger">*</span></label>
                                 <select class="form-control" name="nomor_identifikasi">
                                   <?php 
@@ -49,11 +49,11 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                               </div>
                             </div>
                           </div>
-                          <div class="row">
+                           <div class="row">
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label> Alat Bantu <span class="text-danger">*</span></label>
-                                <input name="alat_bantu" type="text" class="form-control" placeholder="Alat Bantu" value="" >
+                                <input name="intervensi" type="text" class="form-control" placeholder="Alat Bantu" value="" >
 
                               </div>
                             </div>
@@ -61,7 +61,7 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label>Alat Bantu Diperbaiki  <span class="text-danger">*</span></label>
-                                <input type="text" name="alat_bantu_diperbaiki" class="form-control" placeholder="Alat Bantu Diperbaiki" value="" >
+                                <input type="text" name="intervensi_diperbaiki" class="form-control" placeholder="Alat Bantu Diperbaiki" value="" >
                               </div>
 
                             </div>
@@ -87,7 +87,7 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                             <div class="col-md-4">
                               <div class="form-group">
                                 <label>Mendapat Alat Bantu<span class="text-danger">*</span></label>
-                                <select name="mendapat_alat_bantu" id="" class="form-control">
+                                <select name="mendapat_intervensi" id="" class="form-control">
                                   <option value="ya">Ya</option>
                                   <option value="tidak">Tidak</option>
                                 </select>
@@ -100,13 +100,13 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label>Tanggal Penyerahan Alat Bantu  <span class="text-danger">*</span></label>
-                                <input type="date" name="tanggal_dapat_alat_bantu" class="form-control">
+                                <input type="date" name="tanggal_dapat_intervensi" class="form-control">
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label>Pembayaran  <span class="text-danger">*</span></label>
-                                <select class="form-control" name="pembayaran_alat_bantu">
+                                <select class="form-control" name="pembayaran_intervensi">
                                   <option value="Bayar 100%">Bayar 100%</option>
                                   <option value="Bayar >50%">Bayar >50%</option>
                                   <option value="Bayar <50%">Bayar <50%</option>
@@ -120,13 +120,13 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                             <div class="col-md-4">
                               <div class="form-group">
                                 <label>Asal Alat Bantu  <span class="text-danger">*</span></label>
-                                <input type="text" name="asal_alat_bantu" class="form-control" placeholder="Asal Alat Bantu" value="" >
+                                <input type="text" name="asal_intervensi" class="form-control" placeholder="Asal Alat Bantu" value="" >
                               </div>
                             </div>
                             <div class="col-md-4">
                               <div class="form-group">
                                 <label>Cara Pemberian Alat Bantu </label>
-                                <select class="form-control" name="cara_pemberian_alat_bantu">
+                                <select class="form-control" name="cara_pemberian_intervensi">
                                   <option value="Telepon/text">Telepon/text</option>
                                   <option value="Field visit">Field Visit</option>
                                   <option value="At base">At base</option>
@@ -152,7 +152,7 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label>Durasi Penggunaan Alat <span class="text-danger">*</span></label>
-                                <select name="durasi_penggunaan_alat_bantu" id="" class="form-control">
+                                <select name="durasi_penggunaan_intervensi" id="" class="form-control">
                                   <option value="<6 bulan">< 6 Bulan</option>
                                   <option value="6 bulan-1 tahun">6 bulan-1 tahun</option>
                                   <option value=">1 tahun">>1 tahun</option>
@@ -218,7 +218,7 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                               <div class="clearfix"></div>
                             </div>
 
-                          </div>
+                          </div> -->
 
                       </form>
                     </div>

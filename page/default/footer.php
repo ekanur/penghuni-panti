@@ -34,6 +34,29 @@
     
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
+</div>
+
+<div id="hapusAlatBantu" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Hapus Penghuni Panti</h4>
+            </div>
+            <div class="modal-body">
+                Anda yakin akan menghapus data alat bantu ?
+                    
+            </div>
+            <div class="modal-footer">
+                <a href=""  class="btn btn-secondary waves-effect" data-dismiss="modal">Tidak</a>
+                <form action="page/alat_bantu/hapus.php" method="post">
+                    <input type="hidden" name="id" >
+                    <button class="btn btn-success waves-effect waves-light">Ya</button>
+                </form>
+            </div>
+    
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div>  
 
 </body>
@@ -121,6 +144,14 @@ $("#confirmDelete").on("show.bs.modal", function (event) {
 
 
                 $("strong#nama").html(nama);
+                $("input[name='id']").val(id);         
+                
+});
+
+$("#hapusAlatBantu").on("show.bs.modal", function (event) {
+                const alat_bantu = $(event.relatedTarget);
+
+                var id = alat_bantu.data("id");
                 $("input[name='id']").val(id);         
                 
 });

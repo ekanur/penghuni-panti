@@ -45,9 +45,18 @@ include('config/app.php');
 			case 'alat-bantu':
 				include("page/alat_bantu/index.php");
 				break;
+			case 'edit-alat-bantu':
+				include("page/alat_bantu/edit.php");
+				break;
 
 			case 'tambah-alat-bantu':
 				include("page/alat_bantu/tambah.php");
+				break;
+			case 'intervensi':
+				include("page/intervensi/index.php");
+				break;
+			case "tambah-intervensi":
+				include("page/intervensi/tambah.php");
 				break;
 			default:
 				include('page/beranda.php');
