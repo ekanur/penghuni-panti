@@ -8,13 +8,13 @@ header("Location: ". $app_url); /* Redirect browser */
 exit();
 }
 
-$alat_bantu = (object)$_POST;
+$intervensi = (object)$_POST;
 
 
 
-$sql = "update alat_bantu set 
+$sql = "update intervensi set 
 deleted_at = '".date("Y-m-d")."'
-where id = $alat_bantu->id";
+where id = $intervensi->id";
 
 // $query = mysqli_query($conx, $sql) or die(mysqli_error());
 
@@ -24,6 +24,6 @@ if (!mysqli_query($conx, $sql)) {
 }
 
 mysqli_close($conx);
-header("Location:".$app_url."/?act=alat-bantu");
+header("Location:".$app_url."/?act=intervensi");
 exit();
  ?>

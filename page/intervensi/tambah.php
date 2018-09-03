@@ -25,17 +25,7 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                   <div class="row">
                     <div class="col-md-12">
 
-
-                              <!-- <div class="upload_container" style="">
-                                <input type="file" name="foto" style="" onchange="readUrl(this)">
-                              </div>
-
-
-
-                              <img class="avatar border-gray" src="http://localhost/penghuni-panti/uploads/user/default.jpeg" alt="Pilih file foto profil">
-
-                              <h6 class="title text-center" style="margin-top: 10px">Upload foto</h6> -->
-                             <!-- <div class="form-group">
+                              <div class="form-group">
                                 <label>Nomor Identifikasi <span class="text-danger">*</span></label>
                                 <select class="form-control" name="nomor_identifikasi">
                                   <?php 
@@ -50,98 +40,169 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                             </div>
                           </div>
                            <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label> Alat Bantu <span class="text-danger">*</span></label>
-                                <input name="intervensi" type="text" class="form-control" placeholder="Alat Bantu" value="" >
-
-                              </div>
-                            </div>
-
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Alat Bantu Diperbaiki  <span class="text-danger">*</span></label>
-                                <input type="text" name="intervensi_diperbaiki" class="form-control" placeholder="Alat Bantu Diperbaiki" value="" >
-                              </div>
-
-                            </div>
-
-                          </div>
-
-                          <div class="row">
-                            <div class="col-md-4">
-
-                              <div class="form-group">
-                                <label>Tanggal Diresepkan <span class="text-danger">*</span></label>
-                                <input type="date" class="form-control" name="tgl_diresepkan">
-                              </div>
-
-                            </div>
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label>Jadwal Monitoring<span class="text-danger">*</span></label>
-                                <input type="date" class="form-control" name="jadwal_monitoring">
-                              </div>
+                                <label>Subjek Intervensi<span class="text-danger">*</span></label>
+                                <select name="subjek_intervensi" id="" class="form-control">
+                                  <option value="Penyandang disabilitas">Penyandang disabilitas</option>
+                                  <option value="Orang tua/wali">Orang tua/wali</option>
+                                  <option value="Guru">Guru</option>
+                                </select>
 
+                              </div>
                             </div>
+
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label>Mendapat Alat Bantu<span class="text-danger">*</span></label>
-                                <select name="mendapat_intervensi" id="" class="form-control">
-                                  <option value="ya">Ya</option>
-                                  <option value="tidak">Tidak</option>
+                                <label>Jenis Intervensi<span class="text-danger">*</span></label>
+                                <select name="jenis_intervensi" id="" class="form-control">
+                                  <option value="Observasi">Observasi</option>
+                                  <option value="Assessemen lanjutan">Assessemen lanjutan</option>
+                                  <option value="Screening">Screening</option>
+                                  <option value="Monitoring">Monitoring</option>
+                                  <option value="Konseling">Konseling</option>
+                                  <option value="Konsultasi">Konsultasi</option>
+                                  <option value="Rujukan">Rujukan</option>
+                                  <option value="Fasilitasi">Fasilitasi</option>
+                                  <option value="Pelatihan vokasional/profesional_1">Pelatihan vokasional/profesional_1</option>
+                                  <option value="Pelatihan vokasional/profesional_2">Pelatihan vokasional/profesional_2</option>
+                                  <option value="Pelatihan keterampilan atau bisnis_1">Pelatihan keterampilan atau bisnis_1</option>
+                                  <option value="Pelatihan keterampilan atau bisnis_2">Pelatihan keterampilan atau bisnis_2</option>
+                                  <option value="Pelatihan lainnya">Pelatihan lainnya</option>
+                                  <option value="Pelatihan lainnya">Pelatihan lainnya</option>
+                                  <option value="Pekerjaan formal">Pekerjaan formal</option>
+                                  <option value="Berwirausaha, usaha mikro">Berwirausaha, usaha mikro</option>
+                                  <option value="Pekerjaan terlindung">Pekerjaan terlindung</option>
+                                  <option value="Layanan finansial dari organisasi disabilitas">Layanan finansial dari organisasi disabilitas</option>
+                                  <option value="Layanan finansial dari organisasi mainstream">Layanan finansial dari organisasi mainstream</option>
                                 </select>
                               </div>
 
                             </div>
-                          </div>
-
-                          <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                               <div class="form-group">
-                                <label>Tanggal Penyerahan Alat Bantu  <span class="text-danger">*</span></label>
-                                <input type="date" name="tanggal_dapat_intervensi" class="form-control">
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Pembayaran  <span class="text-danger">*</span></label>
-                                <select class="form-control" name="pembayaran_intervensi">
-                                  <option value="Bayar 100%">Bayar 100%</option>
-                                  <option value="Bayar >50%">Bayar >50%</option>
-                                  <option value="Bayar <50%">Bayar <50%</option>
-                                  <option value="Tidak Bayar">Tidak Bayar</option>
+                                <label>Jenis Rujukan<span class="text-danger">*</span></label>
+                                <select name="jenis_rujukan" id="" class="form-control">
+                                  <option value="Kesehatan">Kesehatan</option>
+                                  <option value="Pendidikan">Pendidikan</option>
+                                  <option value="Training/bimbingan">Training/bimbingan</option>
+                                  <option value="Support grup">Support grup</option>
+                                  <option value="Rehab/terapi">Rehab/terapi</option>
+                                  <option value="Alat bantu">Alat bantu</option>
+                                  <option value="Financial services">Financial services</option>
+                                  <option value="Employment">Employment</option>
                                 </select>
                               </div>
+
+                            </div>
+
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-12">
+
+                              <div class="form-group">
+                                <label>Keterangan <span class="text-danger">*</span></label>
+                                <textarea name="keterangan" id="" cols="30" rows="10" class="form-control"></textarea>
+                              </div>
+
                             </div>
                           </div>
 
                           <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                               <div class="form-group">
-                                <label>Asal Alat Bantu  <span class="text-danger">*</span></label>
-                                <input type="text" name="asal_intervensi" class="form-control" placeholder="Asal Alat Bantu" value="" >
-                              </div>
-                            </div>
-                            <div class="col-md-4">
-                              <div class="form-group">
-                                <label>Cara Pemberian Alat Bantu </label>
-                                <select class="form-control" name="cara_pemberian_intervensi">
+                                <label>Cara<span class="text-danger">*</span></label>
+                                <select name="cara" id="" class="form-control">
                                   <option value="Telepon/text">Telepon/text</option>
-                                  <option value="Field visit">Field Visit</option>
+                                  <option value="Field visit">Field visit</option>
+                                  <option value="At base">At base</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-3">
+                              <div class="form-group">
+                                <label>Tanggal  <span class="text-danger">*</span></label>
+                                <input type="date" class="form-control" name="tanggal">
+                              </div>
+                            </div>
+                            <div class="col-md-3">
+                              <div class="form-group">
+                                <label>Tanggal  Follow Up<span class="text-danger">*</span></label>
+                                <input type="date" class="form-control" name="tanggal_follow_up">
+                              </div>
+                            </div>
+                            <div class="col-md-3">
+                              <div class="form-group">
+                                <label>Rencana Monitoring<span class="text-danger">*</span></label>
+                                <input type="text" placeholder="Rencana Monitoring.." class="form-control" name="rencana_monitoring">
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label>Hasil Monitoring Fasilitas Pertama</label>
+                                <input type="text" name="hasil_monitoring_fasilitas1" class="form-control" >
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label>Cara Fasilitas Pertama  <span class="text-danger">*</span></label>
+                                <select name="cara_fasilitas1" id="" class="form-control">
+                                  <option value="Telepon/text">Telepon/text</option>
+                                  <option value="Field visit">Field visit</option>
                                   <option value="At base">At base</option>
                                 </select>
                               </div>
                             </div>
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label>Tanggal Pemberian Alat </label>
-                                <input type="date" name="tanggal_pemberian_alat" class="form-control" >
+                                <label>Tanggal Monitoring Fasilitas Pertama</label>
+                                <input type="date" class="form-control" name="tanggal_fasilitas1">
                               </div>
                             </div>
+                            
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label>Hasil Monitoring Fasilitas Kedua</label>
+                                <input type="text" name="hasil_monitoring_fasilitas2" class="form-control" >
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label>Cara Fasilitas Kedua  <span class="text-danger">*</span></label>
+                                <select name="cara_fasilitas2" id="" class="form-control">
+                                  <option value="Telepon/text">Telepon/text</option>
+                                  <option value="Field visit">Field visit</option>
+                                  <option value="At base">At base</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                <label>Tanggal Monitoring Fasilitas Kedua</label>
+                                <input type="date" class="form-control" name="tanggal_fasilitas2">
+                              </div>
+                            </div>
+                            
                           </div>
 
+                          
                           <div class="row">
+                            <div class="col-md-12">
+
+                              <span class="text-danger">*</span> Wajib diisi
+                              <button type="submit" class="btn btn-info btn-fill pull-right" >Simpan</button>
+                              <div class="clearfix"></div>
+                            </div>
+
+                          </div>
+
+                          <!--<div class="row">
 
                             <div class="col-md-6">
                               <div class="form-group">
@@ -206,18 +267,6 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                                 <input type="text" name="petugas" class="form-control" placeholder="Petugas" value="">
                               </div>
                             </div>
-                          </div>
-                        
-                          
-
-                          <div class="row">
-                            <div class="col-md-12">
-
-                              <span class="text-danger">*</span> Wajib diisi
-                              <button type="submit" class="btn btn-info btn-fill pull-right" >Simpan</button>
-                              <div class="clearfix"></div>
-                            </div>
-
                           </div> -->
 
                       </form>

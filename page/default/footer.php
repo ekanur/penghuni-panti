@@ -41,7 +41,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="myModalLabel">Hapus Penghuni Panti</h4>
+                <h4 class="modal-title" id="myModalLabel">Hapus Alat Bantu</h4>
             </div>
             <div class="modal-body">
                 Anda yakin akan menghapus data alat bantu ?
@@ -57,7 +57,31 @@
     
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-</div>  
+</div>
+
+
+<div id="hapusIntervensi" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Hapus Intervensi Penghuni Panti</h4>
+            </div>
+            <div class="modal-body">
+                Anda yakin akan menghapus data Intervensi ?
+                    
+            </div>
+            <div class="modal-footer">
+                <a href=""  class="btn btn-secondary waves-effect" data-dismiss="modal">Tidak</a>
+                <form action="page/intervensi/hapus.php" method="post">
+                    <input type="hidden" name="id" >
+                    <button class="btn btn-success waves-effect waves-light">Ya</button>
+                </form>
+            </div>
+    
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>    
 
 </body>
     <!--   Core JS Files   -->
@@ -152,6 +176,14 @@ $("#hapusAlatBantu").on("show.bs.modal", function (event) {
                 const alat_bantu = $(event.relatedTarget);
 
                 var id = alat_bantu.data("id");
+                $("input[name='id']").val(id);         
+                
+});
+
+$("#hapusIntervensi").on("show.bs.modal", function (event) {
+                const intervensi = $(event.relatedTarget);
+
+                var id = intervensi.data("id");
                 $("input[name='id']").val(id);         
                 
 });

@@ -58,6 +58,9 @@ include('config/app.php');
 			case "tambah-intervensi":
 				include("page/intervensi/tambah.php");
 				break;
+			case "edit-intervensi":
+				include("page/intervensi/edit.php");
+				break;
 			default:
 				include('page/beranda.php');
 				break;
