@@ -61,6 +61,10 @@ include('config/app.php');
 			case "edit-intervensi":
 				include("page/intervensi/edit.php");
 				break;
+			case "report-client":
+				include("page/client/report.php");
+				break;
+			
 			default:
 				include('page/beranda.php');
 				break;
