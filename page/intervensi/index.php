@@ -1,5 +1,5 @@
 <?php 
-$sql = "select intervensi.id, biodata.nama, intervensi.subjek_intervensi, intervensi.jenis_intervensi, intervensi.tanggal from intervensi inner join biodata on intervensi.nomor_identifikasi = biodata.nomor_identifikasi where intervensi.deleted_at is NULL order by intervensi.id desc";
+$sql = "select intervensi.id, biodata.nama, intervensi.subjek_intervensi, intervensi.jenis_intervensi, intervensi.tanggal from intervensi inner join biodata on intervensi.nomor_identifikasi = biodata.nomor_identifikasi where intervensi.deleted_at is NULL ".$is_admin_kecamatan." order by intervensi.id desc";
 
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
 // var_dump($query);exit();

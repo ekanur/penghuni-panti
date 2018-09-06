@@ -1,5 +1,5 @@
 <?php 
-$sql = "select alat_bantu.id, biodata.nama, alat_bantu.alat_bantu, alat_bantu.tanggal_monitoring, alat_bantu.pembayaran_alat_bantu from alat_bantu inner join biodata on alat_bantu.nomor_identifikasi = biodata.nomor_identifikasi where alat_bantu.deleted_at is NULL order by alat_bantu.id desc";
+$sql = "select alat_bantu.id, biodata.nama, alat_bantu.alat_bantu, alat_bantu.tanggal_monitoring, alat_bantu.pembayaran_alat_bantu from alat_bantu inner join biodata on alat_bantu.nomor_identifikasi = biodata.nomor_identifikasi where alat_bantu.deleted_at is NULL ".$is_admin_kecamatan." order by alat_bantu.id desc";
 
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
 // var_dump($query);exit();
@@ -40,7 +40,9 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                                         <td><?php echo $member->pembayaran_alat_bantu ?></td>
                                         <td><?php echo $member->tanggal_monitoring ?></td>
 
-                                        <td><a href="?act=edit-alat-bantu&id=<?php echo $member->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-edit"></i></a>
+                                        <td>
+                                            <a href="?act=lihat-alat-bantu&id=<?php echo $member->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-eye"></i></a>
+                                            <a href="?act=edit-alat-bantu&id=<?php echo $member->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-edit"></i></a>
                                             <a href="#" class="btn btn-danger btn-simple btn-xs" data-toggle="modal" data-target="#hapusAlatBantu" data-name="<?php echo $member->nama ?>" data-id="<?php echo $member->id ?>"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                         <?php

@@ -28,6 +28,7 @@ include('config/app.php');
 		$idm	= $_SESSION['idm'];
 		// $nama 	= $_SESSION['nama'];
 		// $nidn 	= $_SESSION['nidn'];
+		$is_admin_kecamatan = (!is_null($_SESSION['kecamatan']) || $_SESSION['kecamatan'] == 'admin') ? null : " and biodata.kecamatan=".$_SESSION['kecamatan']." " ;
 
 		switch ($act) {
 			case 'logout':
@@ -42,15 +43,20 @@ include('config/app.php');
 			case 'data-klien':
 				include("page/client/data_klien.php");
 				break;
+			case 'lihat-klien':
+				include("page/client/view.php");
+				break;
 			case 'alat-bantu':
 				include("page/alat_bantu/index.php");
 				break;
 			case 'edit-alat-bantu':
 				include("page/alat_bantu/edit.php");
 				break;
-
 			case 'tambah-alat-bantu':
 				include("page/alat_bantu/tambah.php");
+				break;
+			case 'lihat-alat-bantu':
+				include("page/alat_bantu/view.php");
 				break;
 			case 'intervensi':
 				include("page/intervensi/index.php");

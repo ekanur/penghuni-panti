@@ -73,7 +73,7 @@ if(isset($_POST['username'])){
                     echo "Anda berhasil login";
                     $_SESSION['idm'] = $rows['id_member'];
                     $_SESSION['nama'] = $rows['nama'];
-                    $_SESSION['nidn'] = $rows['NIDN'];
+                    $_SESSION['kecamatan'] = $rows['kecamatan'];
 
                     winloc("");
 
