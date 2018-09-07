@@ -1,7 +1,4 @@
 <?php 
-
-include('../../config/db.php');
-include('../../config/app.php');
 $sql = "select nomor_identifikasi, nama from biodata where deleted_at is NULL order by nama asc";
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
  ?>      
@@ -167,9 +164,7 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label for="telp">Alasan Tidak Menggunakan</label>
-                                <textarea class="form-control" name="alasan_tidak_menggunakan" cols="10" rows="2">
-                                  
-                                </textarea>
+                                <textarea class="form-control" name="alasan_tidak_menggunakan" cols="10" rows="2"></textarea>
                               </div>
                             </div>
                           </div>
@@ -177,9 +172,7 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                             <div class="col-md-12">
                               <div class="form-group">
                                 <label for="telp">Alasan Lain</label>
-                                <textarea class="form-control" name="alasan_lain" cols="10" rows="2">
-                                  
-                                </textarea>
+                                <textarea class="form-control" name="alasan_lain" cols="10" rows="2"></textarea>
                               </div>
                             </div>
                           </div>

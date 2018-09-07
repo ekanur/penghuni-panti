@@ -11,7 +11,10 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Intervensi <a href="?act=tambah-intervensi" class="btn btn-success btn-fill pull-right"><i class="fa fa-plus"></i>Baru</a></h4>
+                        <h4 class="title">Intervensi 
+                            <a href="?act=tambah-intervensi" class="btn btn-success btn-fill pull-right"><i class="fa fa-plus"></i>Baru</a>
+                            <a href="page/intervensi/report.php" class="btn btn-success btn-fill pull-right"><i class="fa fa-plus"></i>Report</a>
+                        </h4>
                         <p class="category"></p>
                     </div>
                     <div class="content table-responsive table-full-width">
