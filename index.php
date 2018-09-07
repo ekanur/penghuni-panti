@@ -28,7 +28,7 @@ include('config/app.php');
 		$idm	= $_SESSION['idm'];
 		// $nama 	= $_SESSION['nama'];
 		// $nidn 	= $_SESSION['nidn'];
-		$is_admin_kecamatan = (!is_null($_SESSION['kecamatan']) || $_SESSION['kecamatan'] == 'admin') ? null : " and biodata.kecamatan=".$_SESSION['kecamatan']." " ;
+		$is_admin_kecamatan = ($_SESSION['kecamatan'] == 'admin') ? null : " and biodata.kec='".$_SESSION['kecamatan']."' " ;
 
 		switch ($act) {
 			case 'logout':
@@ -66,6 +66,9 @@ include('config/app.php');
 				break;
 			case "edit-intervensi":
 				include("page/intervensi/edit.php");
+				break;
+			case 'lihat-intervensi':
+				include("page/intervensi/view.php");
 				break;
 			case "report-client":
 				include("page/client/report.php");

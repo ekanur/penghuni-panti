@@ -1,5 +1,5 @@
 <?php 
-$sql = "select id, nama, jenis_kelamin, alamat from biodata where deleted_at is null order by id desc";
+$sql = "select id, nama, jenis_kelamin, alamat from biodata where deleted_at is NULL ".$is_admin_kecamatan."  order by id desc";
 
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
 // var_dump($query);exit();

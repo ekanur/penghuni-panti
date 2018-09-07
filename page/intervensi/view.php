@@ -1,4 +1,5 @@
 <?php 
+
 $id=$_GET['id'];
 $sql = "select nomor_identifikasi, nama from biodata where deleted_at is NULL order by nama asc";
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
@@ -22,6 +23,7 @@ $intervensi = mysqli_fetch_object($query_intervensi);
                 <h4 class="title">Edit Intervensi</h4>
               </div>
               <div class="content">
+                <fieldset>
                 <form method="POST" action="page/intervensi/update.php"  class="" id="tambah_user">
                   <input type="hidden" name="id" value="<?php echo $id ?>">
                   <div class="row">
@@ -193,85 +195,8 @@ $intervensi = mysqli_fetch_object($query_intervensi);
                             
                           </div>
 
-                          
-                          <div class="row">
-                            <div class="col-md-12">
-
-                              <span class="text-danger">*</span> Wajib diisi
-                              <button type="submit" class="btn btn-info btn-fill pull-right" >Simpan</button>
-                              <div class="clearfix"></div>
-                            </div>
-
-                          </div>
-
-                          <!--<div class="row">
-
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Keterangan Monitoring <span class="text-danger">*</span></label>
-                                <input type="text" name="keterangan_monitoring" class="form-control" placeholder="Keterangan monitoring">
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Durasi Penggunaan Alat <span class="text-danger">*</span></label>
-                                <select name="durasi_penggunaan_intervensi" id="" class="form-control">
-                                  <option <?php echo ($intervensi->subjek_intervensi == 'Guru') ? "selected": null; ?> value="<6 bulan">< 6 Bulan</option>
-                                  <option value="6 bulan-1 tahun">6 bulan-1 tahun</option>
-                                  <option value=">1 tahun">>1 tahun</option>
-                                  <option value="Tidak menggunakan">Tidak menggunakan</option>
-                                </select>
-                              </div>
-                            </div>
-                            
-                          </div>
-
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <label for="telp">Alasan Tidak Menggunakan</label>
-                                <textarea class="form-control" name="alasan_tidak_menggunakan" cols="10" rows="2">
-                                  
-                                </textarea>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <label for="telp">Alasan Lain</label>
-                                <textarea class="form-control" name="alasan_lain" cols="10" rows="2">
-                                  
-                                </textarea>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-4">
-                              <div class="form-group">
-                                <label for="telp">Cara Monitoring <span class="text-danger">*</span></label>
-                                <select class="form-control" name="cara_monitoring">
-                                  <option value="Telepon/text">Telepon/text</option>
-                                  <option value="Field visit">Field visit</option>
-                                  <option value="At base">At base</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-4">
-                              <div class="form-group">
-                                <label for="telp">Tanggal Monitoring <span class="text-danger">*</span></label>
-                                <input type="date" name="tanggal_monitoring" class="form-control">
-                              </div>
-                            </div>
-                            <div class="col-md-4">
-                              <div class="form-group">
-                                <label for="telp">Petugas <span class="text-danger">*</span></label>
-                                <input type="text" name="petugas" class="form-control" placeholder="Petugas" value="">
-                              </div>
-                            </div>
-                          </div> -->
-
                       </form>
+                      </fieldset>
                     </div>
                   </div>
 

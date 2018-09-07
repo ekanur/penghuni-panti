@@ -1,7 +1,4 @@
 <?php 
-
-include('../../config/db.php');
-include('../../config/app.php');
 $id=$_GET['id'];
 $sql = "select nomor_identifikasi, nama from biodata where deleted_at is NULL order by nama asc";
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));

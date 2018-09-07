@@ -2,7 +2,7 @@
 $sql = "select alat_bantu.id, biodata.nama, alat_bantu.alat_bantu, alat_bantu.tanggal_monitoring, alat_bantu.pembayaran_alat_bantu from alat_bantu inner join biodata on alat_bantu.nomor_identifikasi = biodata.nomor_identifikasi where alat_bantu.deleted_at is NULL ".$is_admin_kecamatan." order by alat_bantu.id desc";
 
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
-// var_dump($query);exit();
+// var_dump($sql);exit();
 ?>
 
 <div class="content">

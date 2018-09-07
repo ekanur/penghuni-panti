@@ -35,6 +35,9 @@
         input[readonly], select[readonly], textarea[readonly]{
             border: none;
             background-color: transparent !important;
+            font-weight: bolder;
+            text-transform: uppercase;
+            color: #606060;
         }
     </style>
 

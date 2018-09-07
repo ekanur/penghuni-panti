@@ -43,7 +43,9 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                                         <td><?php echo $intervensi->jenis_intervensi ?></td>
                                         <td><?php echo $intervensi->tanggal ?></td>
 
-                                        <td><a href="?act=edit-intervensi&id=<?php echo $intervensi->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-edit"></i></a>
+                                        <td>
+                                            <a href="?act=lihat-intervensi&id=<?php echo $intervensi->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-eye"></i></a>
+                                            <a href="?act=edit-intervensi&id=<?php echo $intervensi->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-edit"></i></a>
                                             <a href="#" class="btn btn-danger btn-simple btn-xs" data-toggle="modal" data-target="#hapusIntervensi" data-name="<?php echo $intervensi->nama ?>" data-id="<?php echo $intervensi->id ?>"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                         <?php
