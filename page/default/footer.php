@@ -114,6 +114,9 @@
 <script>
     $(document).ready(function(){
         $("#tamu_internasionalTable").DataTable();
+
+        $("fieldset input, fieldset select, fieldset textarea").attr("readonly", true);
+        $("fieldset button").hide();
     });
 </script>
 

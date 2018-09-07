@@ -31,6 +31,12 @@
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="assets/css/dataTables.bootstrap.min.css">
+    <style type="text/css">
+        input[readonly], select[readonly], textarea[readonly]{
+            border: none;
+            background-color: transparent !important;
+        }
+    </style>
 
 </head>
 <body>

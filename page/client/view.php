@@ -47,11 +47,11 @@ $detail_wali = json_decode($biodata->detail_wali);
               <div class="header">
                 <h4 class="title">Biodata Penghuni</h4>
               </div>
+                <fieldset>
               <div class="content">
                 <form method="POST" action="page/client/update_biodata.php" accept-charset="UTF-8" class="" id="tambah_user" role="form">
                   <input type="hidden" name="step" value="biodata">
                   <input type="hidden" name="id" value="<?php echo $biodata->id; ?>">
-
 
                   <div class="row">
                     <div class="col-md-6">
@@ -456,26 +456,14 @@ $detail_wali = json_decode($biodata->detail_wali);
                           </div>
                         </div>
 
-                        
-
-                        <div class="content">
-                          <div class="row">
-                            <div class="col-md-12">
-                              <span class="text-danger">*</span> Wajib diisi
-                              <button type="submit" class="btn btn-info btn-fill pull-right" >Simpan</button>
-                              <div class="clearfix"></div>
-                            </div>
-
-                          </div>
-                        </div>
-
+                        </fieldset>
                       </form>
                     </div>
                   </div>
                   <div class="tab-pane" id="berkas">
 
                     <?php 
-                    $sql = "select * from asessmen where biodata_id=".$biodata->id." and deleted_at is null";
+                    $sql = "select * from asessmen where biodata_id=".$biodata->id." and deleted_at is null ".$is_admin_kecamatan;
 
                     $query= mysqli_query($conx, $sql);
                     $asessmen = mysqli_fetch_object($query);
@@ -492,6 +480,7 @@ $detail_wali = json_decode($biodata->detail_wali);
                     ?>
                     <form action="page/client/simpan_asessmen.php" method="post">
                       <input type="hidden" name="biodata_id" value="<?php echo $biodata->id ?>">
+                      <fieldset>
                       <div class="card">
 
                         <div class="header">
@@ -809,17 +798,9 @@ $detail_wali = json_decode($biodata->detail_wali);
                           </div>
 
                         </div>
-                        <div class="content">
-                          <div class="row">
-                            <div class="col-md-12">
-                              <span class="text-danger">*</span> Wajib diisi
-                              <button type="submit" class="btn btn-info btn-fill pull-right" >Simpan</button>
-                              <div class="clearfix"></div>
-                            </div>
-
-                          </div>
-                        </div>
+                        
                       </div>
+                      </fieldset>
                     </form> 
                   </div>
                 </div>

@@ -42,8 +42,12 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                                         <td><?php echo $member->jenis_kelamin ?></td>
                                         <td><?php echo $member->alamat ?></td>
 
-                                        <td><a href="?act=asessmen&id=<?php echo $member->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-edit"></i></a>
-                                            <a href="#" class="btn btn-danger btn-simple btn-xs" data-toggle="modal" data-target="#confirmDelete" data-name="<?php echo $member->nama ?>" data-id="<?php echo $member->id ?>"><i class="fa fa-times"></i></a></td>
+                                        <td>
+                                            <a href="?act=lihat-klien&id=<?php echo $member->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-eye"></i></a>
+                                            <a href="?act=asessmen&id=<?php echo $member->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-edit"></i></a>
+                                            <a href="#" class="btn btn-danger btn-simple btn-xs" data-toggle="modal" data-target="#confirmDelete" data-name="<?php echo $member->nama ?>" data-id="<?php echo $member->id ?>"><i class="fa fa-times"></i></a>
+
+                                        </td>
                                     </tr>
                                     <?php
                                 }
