@@ -1,22 +1,25 @@
-<?php 
+<?php
 $sql = "select nomor_identifikasi, nama from biodata where deleted_at is NULL order by nama asc";
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
- ?>      
+ ?>
 <div class="content">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
 
-
+        <ul class="nav nav-pills nav-justified thumbnail" id="myTab">
+          <li>
+            <a href="#biodata" role="tab" data-toggle="tab">
+              <h4 class="list-group-item-heading">Intervensi</h4>
+              <small class="list-group-item-text">Form untuk menambah data intervensi</small>
+            </a>
+          </li>
+        </ul>
 
         <div class="tab-content">
           <div class="tab-pane active" id="biodata">
             <div class="card">
 
-
-              <div class="header">
-                <h4 class="title">Tambah Intervensi</h4>
-              </div>
               <div class="content">
                 <form method="POST" action="page/intervensi/simpan.php"  class="" id="tambah_user">
                   <div class="row">
@@ -25,7 +28,7 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                               <div class="form-group">
                                 <label>Nomor Identifikasi <span class="text-danger">*</span></label>
                                 <select class="form-control" name="nomor_identifikasi">
-                                  <?php 
+                                  <?php
                                     while ($biodata = mysqli_fetch_object($query)) {
                                       ?>
                                       <option value="<?php echo $biodata->nomor_identifikasi ?>"><?php echo $biodata->nomor_identifikasi ?> - <?php echo ucwords($biodata->nama) ?></option>
@@ -160,7 +163,7 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                                 <input type="date" class="form-control" name="tanggal_fasilitas1">
                               </div>
                             </div>
-                            
+
                           </div>
                           <div class="row">
                             <div class="col-md-4">
@@ -185,10 +188,10 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                                 <input type="date" class="form-control" name="tanggal_fasilitas2">
                               </div>
                             </div>
-                            
+
                           </div>
 
-                          
+
                           <div class="row">
                             <div class="col-md-12">
 
@@ -218,7 +221,7 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                                 </select>
                               </div>
                             </div>
-                            
+
                           </div>
 
                           <div class="row">
@@ -226,7 +229,7 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                               <div class="form-group">
                                 <label for="telp">Alasan Tidak Menggunakan</label>
                                 <textarea class="form-control" name="alasan_tidak_menggunakan" cols="10" rows="2">
-                                  
+
                                 </textarea>
                               </div>
                             </div>
@@ -236,7 +239,7 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                               <div class="form-group">
                                 <label for="telp">Alasan Lain</label>
                                 <textarea class="form-control" name="alasan_lain" cols="10" rows="2">
-                                  
+
                                 </textarea>
                               </div>
                             </div>
@@ -279,4 +282,3 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
           </div>
         </div>
       </div>
-

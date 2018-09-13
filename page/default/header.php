@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Sistem Informasi Penghuni Panti ABCD | Panti ABCD</title>
+    <title>Sistem Data Informasi | PPRBM Bhakti Luhur - Indepth Rights</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -22,7 +22,7 @@
 
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    
+
 
 
     <!--     Fonts and icons     -->
@@ -31,15 +31,6 @@
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="assets/css/dataTables.bootstrap.min.css">
-    <style type="text/css">
-        input[readonly], select[readonly], textarea[readonly]{
-            border: none;
-            background-color: transparent !important;
-            font-weight: bolder;
-            text-transform: uppercase;
-            color: #606060;
-        }
-    </style>
 
 </head>
 <body>
@@ -57,40 +48,58 @@
     <div class="sidebar-wrapper">
         <div class="logo">
             <a href="" class="simple-text">
-                Panti ABCD
+                PPRBM BHAKTI LUHUR - INDEPTH RIGHTS
             </a>
         </div>
 
         <ul class="nav">
-            
+
             <li>
-                
+
                 <a href="<?php echo $app_url ?>">
                     <i class="pe-7s-graph"></i>
                     <p>Dashboard</p>
                 </a>
             </li>
             <li>
-                
-                <a href="<?php echo $app_url ?>/?act=data-klien">
+                <a href="<?php echo $app_url ?>/?act=client">
                     <i class="pe-7s-user"></i>
-                    <p>Data Klien</p>
+                    <p>Client</p>
                 </a>
             </li>
             <li>
                 <a href="<?php echo $app_url ?>/?act=alat-bantu">
-                    <i class="pe-7s-umbrella"></i>
+                    <i class="pe-7s-user"></i>
                     <p>Alat Bantu</p>
                 </a>
             </li>
             <li>
                 <a href="<?php echo $app_url ?>/?act=intervensi">
-                    <i class="pe-7s-headphones"></i>
+                    <i class="pe-7s-user"></i>
                     <p>Intervensi</p>
                 </a>
             </li>
-            
-            
+            <li>
+                <a href="<?php echo $app_url ?>/?act=irp">
+                    <i class="pe-7s-user"></i>
+                    <p>IRP</p>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $app_url ?>/?act=terampil">
+                    <i class="pe-7s-user"></i>
+                    <p>Keterampilan & Finance</p>
+                </a>
+            </li>
+            <li>
+                <hr />
+            </li>
+           <!--  <li>
+                <a href="<?php echo $app_url ?>/?act=pengaturan">
+                    <i class="pe-7s-user"></i>
+                    <p>Pengaturan</p>
+                </a>
+            </li> -->
         </ul>
     </div>
 </div>
@@ -105,7 +114,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
+
             </div>
             <div class="collapse navbar-collapse">
                 <form class="navbar-form navbar-left navbar-search-form" role="search">
@@ -114,10 +123,10 @@
                         <input name="q" type="text" value="" class="form-control" placeholder="Cari nama...">
                     </div>
                 </form>
-                
+
 
                 <ul class="nav navbar-nav navbar-right">
-                 
+
                     <li>
                         <a href="?act=logout">
                             Log out

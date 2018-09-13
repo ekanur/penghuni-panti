@@ -119,12 +119,22 @@
                           </div>
 
                           <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-10">
                               <div class="form-group">
                                 <label>Alamat  <span class="text-danger">*</span></label>
                                 <input type="text" name="alamat" class="form-control" placeholder="Alamat" value="" >
                               </div>
                             </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Kelurahan/Desa <span class="text-danger">*</span></label>
+                                <input type="text" name="kelurahan" id="" class="form-control" placeholder="Kelurahan/Desa" value="" >
+                              </div>
+                            </div>
+                          
                             <div class="col-md-2">
                               <div class="form-group">
                                 <label>RT </label>
@@ -155,19 +165,23 @@
                               <div class="form-group">
                                 <label>Kecamatan <span class="text-danger">*</span></label>
                                 <select name="kecamatan" id="" class="form-control">
-                                  <option value="Lowokwaru">Lowokwaru</option>
+                                  <option value="Kec. Batu">Kec. Batu</option>
+                                  <option value="Kec. Bumiaji">Kec. Bumiaji</option>
+                                  <option value="Kec. Junrejo">Kec. Junrejo</option>
+                                  <option value="Kec. Lowokwaru">Kec. Lowokwaru</option>
+                                  <option value="Kec. Sukun">Kec. Sukun</option>
+                                  <option value="Kec. Blimbing">Kec. Blimbing</option>
+                                  <option value="Kec. Klojen">Kec. Klojen</option>
+                                  <option value="Kec. Kedungkandang">Kec. Kedungkandang</option>
+                                  <option value="Kec. Lawang">Kec. Lawang</option>
+                                  <option value="Kec. Singosari">Kec. Singosari</option>
+                                  <option value="Kec. Pakis">Kec. Pakis</option>
+                                  <option value="Kec. Tumpang">Kec. Tumpang</option>
+                                  <option value="Kec. Tajinan">Kec. Tajinan</option>
                                 </select>
                               </div>
                             </div>
-                            <div class="col-md-4">
-                              <div class="form-group">
-                                <label>Kelurahan/Desa <span class="text-danger">*</span></label>
-                                <select name="kelurahan" id="" class="form-control">
-                                  <option value="Tunjungsekar">Tunjungsekar</option>
 
-                                </select>
-                              </div>
-                            </div>
                           </div>
 
                         </div>
@@ -434,7 +448,7 @@
                           </div>
                         </div>
 
-                        
+
 
                         <div class="content">
                           <div class="row">
@@ -691,7 +705,7 @@
                                 </select>
                               </div>
                             </div>
-                            
+
                             <div class="col-md-4">
                               <div class="form-group">
                                 <label for="">Tanggal</label>
@@ -784,4 +798,3 @@
             </div>
           </div>
         </div>
-

@@ -3,6 +3,9 @@ session_start();
 include('config/db.php');
 include('config/app.php');
 
+
+// var_dump($_SESSION['idm']);exit();
+
 	$act = '';
 
 	if (isset($_GET['act'])) {
@@ -29,23 +32,24 @@ include('config/app.php');
 		// $nama 	= $_SESSION['nama'];
 		// $nidn 	= $_SESSION['nidn'];
 		$is_admin_kecamatan = ($_SESSION['kecamatan'] == 'admin') ? null : " and biodata.kec='".$_SESSION['kecamatan']."' " ;
-
 		switch ($act) {
 			case 'logout':
 				include('page/default/logout.php');
 				break;
-			case 'tambah':
+
+			case 'client':
+					include('page/client/index.php');
+					break;
+			case 'view-client':
+					include('page/client/view.php');
+					break;
+			case 'tambah-client':
 				include('page/client/tambah.php');
 				break;
 			case 'asessmen':
 				include('page/client/asessmen.php');
 				break;
-			case 'data-klien':
-				include("page/client/data_klien.php");
-				break;
-			case 'lihat-klien':
-				include("page/client/view.php");
-				break;
+
 			case 'alat-bantu':
 				include("page/alat_bantu/index.php");
 				break;
@@ -55,31 +59,47 @@ include('config/app.php');
 			case 'tambah-alat-bantu':
 				include("page/alat_bantu/tambah.php");
 				break;
-			case 'lihat-alat-bantu':
-				include("page/alat_bantu/view.php");
-				break;
+
+			case 'terampil':
+					include('page/terampil/view.php');
+					break;
+			case 'edit-terampil':
+					include('page/terampil/edit.php');
+					break;
+			case 'tambah-terampil':
+					include('page/terampil/tambah.php');
+					break;
+
+			case 'irp':
+					include('page/irp/view.php');
+					break;
+			case 'edit-irp':
+					include('page/irp/edit.php');
+					break;
+			case 'tambah-irp':
+					include('page/irp/tambah.php');
+					break;
+
 			case 'intervensi':
-				include("page/intervensi/index.php");
-				break;
+					include('page/intervensi/view.php');
+					break;
 			case "tambah-intervensi":
 				include("page/intervensi/tambah.php");
 				break;
 			case "edit-intervensi":
 				include("page/intervensi/edit.php");
 				break;
-			case 'lihat-intervensi':
-				include("page/intervensi/view.php");
+
+			case "pengaturan":
+				include('page/pengaturan/index.php');
 				break;
-			case "report-client":
-				include("page/client/report.php");
-				break;
-			
+
 			default:
 				include('page/beranda.php');
 				break;
 		}
 		include("page/default/footer.php");
-		
+
 	}
 
 	mysqli_close($conx);

@@ -4,7 +4,7 @@
 
 $id = $_GET['id'];
 
-$sql = "select * from biodata where biodata.id = ".$id." and deleted_at is null ".$is_admin_kecamatan;
+$sql = "select * from biodata where biodata.id = ".$id." and deleted_at is null";
 
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
 

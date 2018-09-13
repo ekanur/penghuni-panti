@@ -1,11 +1,12 @@
-<?php 
+<?php
+// session_start();
 if(isset($_POST['username'])){
 
 }
 ?>
 <body>
     <div class="wrapper wrapper-full-page">
-  
+
         <!-- End Navbar -->
         <div class="full-page  section-image" data-color="black" data-image="assets/img/bg.jpg" ;>
             <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
@@ -27,7 +28,7 @@ if(isset($_POST['username'])){
                                             <label>Password</label>
                                             <input type="password" placeholder="*****" class="form-control" name="password">
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="card-footer ml-auto mr-auto">
@@ -47,42 +48,51 @@ if(isset($_POST['username'])){
                         <script>
                             document.write(new Date().getFullYear())
                         </script>
-                        <a href="https://www.creative-tim.com">Panti ABCD</a>
+                        <a href="#">PPRBM Bhakti Luhur - Indepth Rights</a>
                     </p>
                 </nav>
             </div>
         </footer>
     </div>
-    
+
 </body>
 
-<?php 
+<?php
 if(isset($_POST['username'])){
+
     if(isset($_POST['username']) && isset($_POST['password'])){
         if($_POST['username'] != '' && $_POST['password'] != '' ){
 
             $username = _esc($_POST['username']);
-            $sql = "SELECT * from member where username='$username' limit 1";
+            $password = md5(_esc($_POST['password']));
+            $sql = "SELECT * from member where username='$username' and password='$password' limit 1";
+            // var_dump($sql);exit();
             $query = mysqli_query($conx,$sql);
             if(mysqli_num_rows($query) > 0){
 
                 $rows = mysqli_fetch_array($query);
-                $p = md5(_esc($_POST['password']));
+                // $p = md5(_esc($_POST['password']));
+                $_SESSION['idm'] = $rows['id_member'];
+                $_SESSION['kecamatan'] = $rows['kecamatan'];
+                // var_dump($_SESSION['idm']);exit();
+                header("Location:".$app_url);
 
-                if($p == $rows['password']){
-                    echo "Anda berhasil login";
-                    $_SESSION['idm'] = $rows['id_member'];
-                    $_SESSION['nama'] = $rows['nama'];
-                    $_SESSION['kecamatan'] = $rows['kecamatan'];
 
-                    winloc("");
 
-                } else {
-                    echo "<label>Password tidak cocok</label>";
-                }
+                // if($p == $rows['password']){
+                //     echo "Anda berhasil login";
+                //     $_SESSION['idm'] = $rows['id_member'];
+                //     // $_SESSION['nama'] = $rows['nama'];
+                //     // $_SESSION['nidn'] = $rows['NIDN'];
+                //     // var_dump($conx);
+                //     winloc("");
+                //
+                // } else {
+                //     echo "<label>Password tidak cocok</label>";
+                // }
 
             } else {
-                echo "<label>email tidak terdaftar</label>";
+                echo "<label>login gagal</label>";
             }
         }
     }

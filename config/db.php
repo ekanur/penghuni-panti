@@ -14,13 +14,15 @@ if (mysqli_connect_errno())
 
 mysqli_select_db($conx,$db) or die("Database tidak ditemukan");
 
+//var_dump($conx); exit;
+
 $targetFolder = "file/member";
 function winloc($x){
 	?>
 	<script type='text/javascript'>
 		window.location = "<?php echo $x;?>";
 	</script>
-	<?php 
+	<?php
 }
 
 function _esc($x){
