@@ -12,7 +12,14 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                 <div class="card">
                     <div class="header">
                         <h4 class="title">
-                          Intervensi <a href="?act=tambah-intervensi" class="btn btn-success btn-xs"><i class="fa fa-plus"></i>Tambah</a>
+                          Intervensi 
+                        <?php 
+                                if(null == $is_admin_kecamatan){
+                             ?>
+                          <a href="?act=tambah-intervensi" class="btn btn-success btn-xs"><i class="fa fa-plus"></i>Tambah</a>
+                        <?php 
+                            }
+                           ?>
                         </h4>
                         <p class="category"></p>
                     </div>
@@ -42,8 +49,16 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                                         <td><?php echo $intervensi->jenis_intervensi ?></td>
                                         <td><?php echo $intervensi->tanggal ?></td>
 
-                                        <td><a href="?act=edit-intervensi&id=<?php echo $intervensi->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-edit"></i></a>
-                                            <a href="#" class="btn btn-danger btn-simple btn-xs" data-toggle="modal" data-target="#hapusIntervensi" data-name="<?php echo $intervensi->nama ?>" data-id="<?php echo $intervensi->id ?>"><i class="fa fa-times"></i></a></td>
+                                        <td>
+                                            <?php 
+                                                if(null == $is_admin_kecamatan){
+                                             ?>
+                                            <a href="?act=edit-intervensi&id=<?php echo $intervensi->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-edit"></i></a>
+                                            <a href="#" class="btn btn-danger btn-simple btn-xs" data-toggle="modal" data-target="#hapusIntervensi" data-name="<?php echo $intervensi->nama ?>" data-id="<?php echo $intervensi->id ?>"><i class="fa fa-times"></i></a>
+                                            <?php 
+                                                }
+                                               ?>
+                                        </td>
                                         </tr>
                                         <?php
                                     }

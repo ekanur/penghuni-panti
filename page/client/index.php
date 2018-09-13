@@ -12,7 +12,14 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                 <div class="card">
                     <div class="header">
                         <h4 class="title">
-                          Data Klien <a href="?act=tambah-client" class="btn btn-success btn-xs"><i class="fa fa-plus"></i>Tambah</a>
+                          Data Klien
+                          <?php 
+                            if(null == $is_admin_kecamatan){
+                         ?>
+                         <a href="?act=tambah-client" class="btn btn-success btn-xs"><i class="fa fa-plus"></i>Tambah</a>
+                         <?php 
+                            }
+                           ?>
                         </h4>
 
                         <p class="category"></p>
@@ -44,8 +51,14 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                                         <td><?php echo $member->alamat ?> <?php echo $member->rt ?> <?php echo $member->rw ?> <?php echo $member->kelurahan ?> <?php echo $member->kec ?> <?php echo $member->kota ?></td>
                                         <td>
                                           <a href="?act=view-client&id=<?php echo $member->id ?>" class="btn btn-warning btn-simple btn-xs"><i class="fa fa-eye"></i>Detil</a>
+                                          <?php 
+                                                if(null == $is_admin_kecamatan){
+                                             ?>
                                           <a href="?act=asessmen&id=<?php echo $member->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-edit"></i>Edit</a>
                                           <a href="#" class="btn btn-danger btn-simple btn-xs" data-toggle="modal" data-target="#confirmDelete" data-name="<?php echo $member->nama ?>" data-id="<?php echo $member->id ?>"><i class="fa fa-times"></i>Hapus</a>
+                                          <?php
+                                }
+                                 ?>
                                         </td>
                                     </tr>
                                     <?php

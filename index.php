@@ -44,6 +44,7 @@ include('config/app.php');
 					include('page/client/view.php');
 					break;
 			case 'tambah-client':
+				if(null != $is_admin_kecamatan){ break; }
 				include('page/client/tambah.php');
 				break;
 			case 'asessmen':
@@ -54,9 +55,11 @@ include('config/app.php');
 				include("page/alat_bantu/index.php");
 				break;
 			case 'edit-alat-bantu':
+				if(null != $is_admin_kecamatan){ break; }
 				include("page/alat_bantu/edit.php");
 				break;
 			case 'tambah-alat-bantu':
+				if(null != $is_admin_kecamatan){ break; }
 				include("page/alat_bantu/tambah.php");
 				break;
 
@@ -67,6 +70,7 @@ include('config/app.php');
 					include('page/terampil/edit.php');
 					break;
 			case 'tambah-terampil':
+				if(null != $is_admin_kecamatan){ break; }
 					include('page/terampil/tambah.php');
 					break;
 
@@ -74,9 +78,11 @@ include('config/app.php');
 					include('page/irp/view.php');
 					break;
 			case 'edit-irp':
+				if(null != $is_admin_kecamatan){ break; }
 					include('page/irp/edit.php');
 					break;
 			case 'tambah-irp':
+					if(null != $is_admin_kecamatan){ break; }
 					include('page/irp/tambah.php');
 					break;
 
@@ -84,9 +90,11 @@ include('config/app.php');
 					include('page/intervensi/view.php');
 					break;
 			case "tambah-intervensi":
+				if(null != $is_admin_kecamatan){ break; }
 				include("page/intervensi/tambah.php");
 				break;
 			case "edit-intervensi":
+				if(null != $is_admin_kecamatan){ break; }
 				include("page/intervensi/edit.php");
 				break;
 

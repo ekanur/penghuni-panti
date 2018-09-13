@@ -11,8 +11,14 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Alat Bantu 
+                        <h4 class="title">Alat Bantu
+                        <?php 
+                            if(null == $is_admin_kecamatan){
+                         ?> 
                           <a href="?act=tambah-alat-bantu" class="btn btn-success btn-xs"><i class="fa fa-plus"></i>Tambah</a>
+                          <?php 
+                            }
+                           ?>
                         </h4>
                         <p class="category"></p>
                     </div>
@@ -42,8 +48,16 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                                         <td><?php echo $member->pembayaran_alat_bantu ?></td>
                                         <td><?php echo $member->tanggal_monitoring ?></td>
 
-                                        <td><a href="?act=edit-alat-bantu&id=<?php echo $member->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-edit"></i></a>
-                                            <a href="#" class="btn btn-danger btn-simple btn-xs" data-toggle="modal" data-target="#hapusAlatBantu" data-name="<?php echo $member->nama ?>" data-id="<?php echo $member->id ?>"><i class="fa fa-times"></i></a></td>
+                                        <td>
+                                            <?php 
+                                                if(null == $is_admin_kecamatan){
+                                             ?> 
+                                            <a href="?act=edit-alat-bantu&id=<?php echo $member->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-edit"></i></a>
+                                            <a href="#" class="btn btn-danger btn-simple btn-xs" data-toggle="modal" data-target="#hapusAlatBantu" data-name="<?php echo $member->nama ?>" data-id="<?php echo $member->id ?>"><i class="fa fa-times"></i></a>
+                                            <?php 
+                                                }
+                                             ?>
+                                        </td>
                                         </tr>
                                         <?php
                                     }
