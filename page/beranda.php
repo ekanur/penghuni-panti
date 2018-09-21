@@ -1,4 +1,26 @@
+<?php 
+$sql = "SELECT
+count(biodata.id) as count,
+kec,
+jenis_kelamin
+FROM
+biodata
+GROUP BY kec, jenis_kelamin";
 
+$query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
+$data_klien = array();
+
+while($klien = mysqli_fetch_object($query)){
+  // if(!array_key_exists($klien->kec, $data_klien)){
+  $data_klien[$klien->kec] = array($klien->jenis_kelamin=>$klien->count);
+  if(!array_key_exists($klien->jenis_kelamin, $data_klien[$klien->kec])){      
+      $data_klien[$klien->kec] = array($klien->jenis_kelamin=>$klien->count);
+    }
+  
+}
+echo "<pre>";
+var_dump($data_klien);exit();
+ ?>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -47,7 +69,33 @@
             <div class="col-md-12">
               <div class="tab-content">
                 <div class="tab-pane active" id="klien">
-                  <div class="card">
+                  <table id="tabel_klien" style="display: none;">
+                    <thead>
+                      <tr>
+                        <th></th>
+                      <th>Pria</th>
+                      <th>Wanita</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Lowokwaru</td>
+                        <td>20</td>
+                        <td>30</td>
+                      </tr>
+                      <tr>
+                        <td>Klojen</td>
+                        <td>33</td>
+                        <td>13</td>
+                      </tr>
+                      <tr>
+                        <td>Sukun</td>
+                        <td>20</td>
+                        <td>5</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="card" id="chart_klien">
                     Klien
                   </div>
                 </div>

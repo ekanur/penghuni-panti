@@ -107,32 +107,39 @@
 </div>
 </body>
     <!--   Core JS Files   -->
-    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 <script src="assets/js/popper.min.js" type="text/javascript"></script>
 
+<!-- Highchart -->
+
+<script type="text/javascript" src="assets/js/highchart/highcharts.js"></script>
+<script type="text/javascript" src="assets/js/highchart/modules/data.js"></script>
+<script type="text/javascript" src="assets/js/highchart/modules/exporting.js"></script>
+<script type="text/javascript" src="assets/js/highchart/modules/export-data.js"></script>
+
 	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
+<script src="assets/js/bootstrap-checkbox-radio-switch.js"></script>
 
 	<!--  Charts Plugin -->
-	<script src="assets/js/chartist.min.js"></script>
+<script src="assets/js/chartist.min.js"></script>
 
     <!--  Notifications Plugin    -->
-    <script src="assets/js/bootstrap-notify.js"></script>
+<script src="assets/js/bootstrap-notify.js"></script>
 
     <!--  Google Maps Plugin
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="assets/js/light-bootstrap-dashboard.js"></script>
+<script src="assets/js/light-bootstrap-dashboard.js"></script>
 
 
-	<script src="assets/js/demo.js"></script>
+<script src="assets/js/demo.js"></script>
 
-        <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="assets/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="assets/js/dataTables.bootstrap.min.js"></script>
 <script>
     $(document).ready(function(){
         $("#tamu_internasionalTable").DataTable();
@@ -167,6 +174,54 @@ $("#hapusTerampil").on("show.bs.modal", function (event) {
                 $("input[name='id']").val(id);
 
 });
+});
+</script>
+
+<script type="text/javascript">
+    Highcharts.chart('chart_klien', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Jumlah Klien'
+    },
+    subtitle: {
+        text: 'Berdasarkan Kecamatan'
+    },
+    xAxis: {
+        categories: [
+            'Lowokwaru',
+            'Klojen',
+            'Sukun'
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y} responden</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.02,
+            borderWidth: 1
+        }
+    },
+    data: {
+      table: 'tabel_klien'
+    },
+    series: [{
+      name: 'Jumlah Klien'
+    }]
 });
 </script>
 
