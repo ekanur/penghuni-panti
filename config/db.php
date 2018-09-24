@@ -1,7 +1,7 @@
 <?php
 $h = "localhost";
-$u = "root";
-$p = "";
+$u = "pma";
+$p = "123";
 $db = "penghuni-panti";
 
 $conx = mysqli_connect($h,$u,$p);

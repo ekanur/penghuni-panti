@@ -4,7 +4,7 @@
 
                 </nav>
                 <p class="copyright pull-right">
-                    &copy; 2018 <a href="http://www.google.com">Panti ABCD</a>
+                    &copy; <?php echo date("Y") ?> <a href="http://www.google.com">Panti ABCD</a>
                 </p>
             </div>
         </footer>
@@ -190,9 +190,13 @@ $("#hapusTerampil").on("show.bs.modal", function (event) {
     },
     xAxis: {
         categories: [
-            'Lowokwaru',
-            'Klojen',
-            'Sukun'
+            <?php 
+                if(!is_null($kecamatan)){
+                   foreach ($kecamatan as $kecamatan) {
+                        echo $kecamatan.",";
+                    } 
+                }
+             ?>
         ],
         crosshair: true
     },

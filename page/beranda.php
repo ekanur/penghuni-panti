@@ -10,16 +10,17 @@ GROUP BY kec, jenis_kelamin";
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
 $data_klien = array();
 
-while($klien = mysqli_fetch_object($query)){
-  // if(!array_key_exists($klien->kec, $data_klien)){
-  $data_klien[$klien->kec] = array($klien->jenis_kelamin=>$klien->count);
-  if(!array_key_exists($klien->jenis_kelamin, $data_klien[$klien->kec])){      
-      $data_klien[$klien->kec] = array($klien->jenis_kelamin=>$klien->count);
-    }
-  
+while($klien = mysqli_fetch_object($query)){    
+      $data_klien[$klien->kec][$klien->jenis_kelamin] = intval($klien->count);
+      if(!array_key_exists('pria', $data_klien[$klien->kec])){
+        $data_klien[$klien->kec]['pria'] = 0;
+      }
+
+      if(!array_key_exists('wanita', $data_klien[$klien->kec])){
+        $data_klien[$klien->kec]['wanita'] = 0;
+      }
 }
-echo "<pre>";
-var_dump($data_klien);exit();
+
  ?>
 <div class="content">
     <div class="container-fluid">
@@ -78,24 +79,21 @@ var_dump($data_klien);exit();
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Lowokwaru</td>
-                        <td>20</td>
-                        <td>30</td>
-                      </tr>
-                      <tr>
-                        <td>Klojen</td>
-                        <td>33</td>
-                        <td>13</td>
-                      </tr>
-                      <tr>
-                        <td>Sukun</td>
-                        <td>20</td>
-                        <td>5</td>
-                      </tr>
+                      <?php
+                      // $kecamatan = array_keys($data_klien); 
+                        foreach ($data_klien as $key => $value) {
+                          ?>
+                          <tr>
+                            <td><?php echo $key ?></td>
+                            <td><?php echo $value['pria'] ?></td>
+                            <td><?php echo $value['wanita'] ?></td>
+                          </tr>
+                          <?php
+                        }
+                       ?>
                     </tbody>
                   </table>
-                  <div class="card" id="chart_klien">
+                  <div class="card" id="chart_klien" style="min-height: 100%">
                     Klien
                   </div>
                 </div>
