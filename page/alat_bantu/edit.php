@@ -1,14 +1,12 @@
-<?php 
+<?php
 
-include('../../config/db.php');
-include('../../config/app.php');
 $id=$_GET['id'];
 $sql = "select nomor_identifikasi, nama from biodata where deleted_at is NULL order by nama asc";
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
 $sql_edit = "select * from alat_bantu where id = ".$id." and deleted_at is NULL";
 $query_alat_bantu = mysqli_query($conx, $sql_edit) or die(mysqli_error($conx));
 $alat_bantu = mysqli_fetch_object($query_alat_bantu);
- ?>      
+ ?>
 <div class="content">
   <div class="container-fluid">
     <div class="row">
@@ -22,7 +20,7 @@ $alat_bantu = mysqli_fetch_object($query_alat_bantu);
 
 
               <div class="header">
-                <h4 class="title">Tambah Alat Bantu</h4>
+                <h4 class="title">Edit Alat Bantu</h4>
               </div>
               <div class="content">
                 <form method="POST" action="page/alat_bantu/update.php"  class="" id="tambah_user">
@@ -30,20 +28,10 @@ $alat_bantu = mysqli_fetch_object($query_alat_bantu);
                   <div class="row">
                     <div class="col-md-12">
 
-
-                              <!-- <div class="upload_container" style="">
-                                <input type="file" name="foto" style="" onchange="readUrl(this)">
-                              </div>
-
-
-
-                              <img class="avatar border-gray" src="http://localhost/penghuni-panti/uploads/user/default.jpeg" alt="Pilih file foto profil">
-
-                              <h6 class="title text-center" style="margin-top: 10px">Upload foto</h6> -->
                               <div class="form-group">
                                 <label>Nomor Identifikasi <span class="text-danger">*</span></label>
                                 <select class="form-control" name="nomor_identifikasi">
-                                  <?php 
+                                  <?php
                                     while ($biodata = mysqli_fetch_object($query)) {
                                       ?>
                                       <option <?php if($biodata->nomor_identifikasi == $alat_bantu->nomor_identifikasi){echo "selected";} ?> value="<?php echo $biodata->nomor_identifikasi ?>"><?php echo $biodata->nomor_identifikasi ?> - <?php echo ucwords($biodata->nama) ?></option>
@@ -165,7 +153,7 @@ $alat_bantu = mysqli_fetch_object($query_alat_bantu);
                                 </select>
                               </div>
                             </div>
-                            
+
                           </div>
 
                           <div class="row">
@@ -208,8 +196,8 @@ $alat_bantu = mysqli_fetch_object($query_alat_bantu);
                               </div>
                             </div>
                           </div>
-                        
-                          
+
+
 
                           <div class="row">
                             <div class="col-md-12">
@@ -234,6 +222,3 @@ $alat_bantu = mysqli_fetch_object($query_alat_bantu);
           </div>
         </div>
       </div>
-
-
-

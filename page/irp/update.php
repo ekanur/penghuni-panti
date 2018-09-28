@@ -8,17 +8,17 @@ if(!isset($_SESSION['idm'])){
 	exit();
 }
 
-$terampil = (object)$_POST;
+$irp = (object)$_POST;
 
 
 
-$sql = "update terampil set
-nomor_identifikasi = '".$terampil->nomor_identifikasi."',
-pelatihan_keterampilan = '".$terampil->pelatihan_keterampilan."',
-bantuan_finance = '".$terampil->bantuan_finance."',
-hasil_monitoring_pendapatan = '".$terampil->hasil_monitoring_pendapatan."',
-petugas = '".$terampil->petugas."'
-where id = $terampil->id
+$sql = "update irp set
+nomor_identifikasi = '".$irp->nomor_identifikasi."',
+buat_irp = '".$irp->buat_irp."',
+alasan_tidak_buat = '".$irp->alasan_tidak_buat."',
+pelatihan_ortu = '".$irp->pelatihan_ortu."',
+dibuat_oleh = '".$irp->dibuat_oleh."'
+where id = $irp->id_irp
 	";
 
 // $query = mysqli_query($conx, $sql) or die(mysqli_error());
@@ -29,7 +29,7 @@ if (!mysqli_query($conx, $sql)) {
 }
 
 mysqli_close($conx);
-header("Location:".$app_url."/?act=terampil");
+header("Location:".$app_url."/?act=irp");
 exit();
 
 ?>

@@ -140,11 +140,7 @@
 
 <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="assets/js/dataTables.bootstrap.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $("#tamu_internasionalTable").DataTable();
-    });
-</script>
+<!-- -->
 
 <script type="text/javascript">
         var hash = document.location.hash;
@@ -191,11 +187,11 @@ $("#hapusTerampil").on("show.bs.modal", function (event) {
     xAxis: {
         categories: [
             <?php 
-                if(!is_null($kecamatan)){
-                   foreach ($kecamatan as $kecamatan) {
-                        echo $kecamatan.",";
-                    } 
-                }
+                // if(!is_null($kecamatan)){
+                //    foreach ($kecamatan as $kecamatan) {
+                //         echo $kecamatan.",";
+                //     } 
+                // }
              ?>
         ],
         crosshair: true

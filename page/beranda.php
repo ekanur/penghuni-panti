@@ -80,7 +80,7 @@ while($klien = mysqli_fetch_object($query)){
                     </thead>
                     <tbody>
                       <?php
-                      // $kecamatan = array_keys($data_klien); 
+                        // $kecamatan = array_keys($data_klien); 
                         foreach ($data_klien as $key => $value) {
                           ?>
                           <tr>

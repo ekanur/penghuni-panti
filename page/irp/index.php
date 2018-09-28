@@ -1,9 +1,13 @@
 <?php
-$sql = "select * from biodata where deleted_at is null ".$is_admin_kecamatan." order by id desc";
+$sql = "
+SELECT irp.id, biodata.nama, irp.nomor_identifikasi, irp.buat_irp, irp.dibuat_oleh, irp.alasan_tidak_buat, irp.pelatihan_ortu
+FROM irp INNER JOIN biodata ON irp.nomor_identifikasi = biodata.nomor_identifikasi
+WHERE irp.deleted_at IS NULL ".$is_admin_kecamatan." ORDER BY irp.id DESC
+";
 
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
 // var_dump($query);exit();
- ?>
+?>
 
 <div class="content">
     <div class="container-fluid">
@@ -11,10 +15,7 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">
-                          Data Klien <a href="?act=tambah-client" class="btn btn-success btn-xs"><i class="fa fa-plus"></i>Tambah</a>
-                        </h4>
-
+                        <h4 class="title">IRP <a href="?act=tambah-irp" class="btn btn-success btn-xs"><i class="fa fa-plus"></i>Tambah</a></h4>
                         <p class="category"></p>
                     </div>
                     <div class="content table-responsive table-full-width">
@@ -22,10 +23,9 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>ID Klien LV</th>
-                                    <th>Name</th>
-                                    <th>Gender</th>
-                                    <th>Alamat</th>
+                                    <th>Nama dan Nomor Identifikasi</th>
+                                    <th>Buat IRP</th>
+                                    <th>Dibuat Oleh</th>
                                     <th>Action</th>
                                 </tr>
 
@@ -33,20 +33,19 @@ $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
                             <tbody>
                                 <?php
                                 $i=1;
-                                while ($member = mysqli_fetch_object($query)) {
+                                while ($irp = mysqli_fetch_object($query)) {
 
                                     ?>
                                     <tr class="odd" role="row">
                                         <td><?php echo $i++ ?></td>
-                                        <td><?php echo $member->id_klien_lv ?></td>
-                                        <td><?php echo $member->nama ?></td>
-                                        <td><?php echo $member->jenis_kelamin ?></td>
-                                        <td><?php echo $member->alamat ?> <?php echo $member->rt ?> <?php echo $member->rw ?> <?php echo $member->kelurahan ?> <?php echo $member->kec ?> <?php echo $member->kota ?></td>
+                                        <td><?php echo $irp->nomor_identifikasi." - ".$irp->nama ?></td>
+                                        <td><?php echo $irp->buat_irp ?></td>
+                                        <td><?php echo $irp->dibuat_oleh ?></td>
                                         <td>
-                                          <a href="?act=view-client&id=<?php echo $member->id ?>" class="btn btn-warning btn-simple btn-xs"><i class="fa fa-eye"></i>Detil</a>
+                                          <a href="?act=view-irp&id=<?php echo $irp->id ?>" class="btn btn-warning btn-simple btn-xs"><i class="fa fa-eye"></i>Detil</a>
                                           <?php if(null == $is_admin_kecamatan){ ?>
-                                            <a href="?act=asessmen&id=<?php echo $member->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-edit"></i>Edit</a>
-                                            <a href="#" class="btn btn-danger btn-simple btn-xs" data-toggle="modal" data-target="#confirmDelete" data-name="<?php echo $member->nama ?>" data-id="<?php echo $member->id ?>"><i class="fa fa-times"></i>Hapus</a>
+                                          <a href="?act=edit-irp&id=<?php echo $irp->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-edit"></i>Edit</a>
+                                          <a href="#" class="btn btn-danger btn-simple btn-xs" data-toggle="modal" data-target="#hapusTerampil" date-cat="irp" data-name="<?php echo $irp->nama ?>" data-id="<?php echo $irp->id ?>"><i class="fa fa-times"></i>Hapus</a>
                                           <?php } ?>
                                         </td>
                                     </tr>

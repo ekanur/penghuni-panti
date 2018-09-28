@@ -398,7 +398,6 @@ $detail_wali = json_decode($biodata->detail_wali);
                               <a href="?act=client"><button type="submit" class="btn btn-info btn-fill pull-right" >Kembali</button></a>
                               <div class="clearfix"></div>
                             </div>
-
                           </div>
                         </div>
 

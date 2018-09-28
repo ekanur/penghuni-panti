@@ -1,8 +1,6 @@
 <?php
-include('../../config/db.php');
-include('../../config/app.php');
 $id=$_GET['id'];
-$sql = "select nomor_identifikasi, nama from biodata where deleted_at is NULL order by nama asc";
+$sql = "select nomor_identifikasi, nama from biodata where biodata.id = ".$id." ".$is_admin_kecamatan." and deleted_at is NULL order by nama asc";
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
 $sql_edit = "select * from terampil where id = ".$id." and deleted_at is NULL";
 $query_terampil = mysqli_query($conx, $sql_edit) or die(mysqli_error($conx));

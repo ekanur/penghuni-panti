@@ -1,12 +1,10 @@
 <?php
-include('../../config/db.php');
-include('../../config/app.php');
-$id=$_GET['id'];
-$sql = "select nomor_identifikasi, nama from biodata where deleted_at is NULL order by nama asc";
+$id = $_GET['id'];
+$sql = "select nomor_identifikasi, nama from biodata where id = ".$id." and deleted_at is NULL order by nama asc";
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
-$sql_edit = "select * from terampil where id = ".$id." and deleted_at is NULL";
-$query_terampil = mysqli_query($conx, $sql_edit) or die(mysqli_error($conx));
-$terampil = mysqli_fetch_object($query_terampil);
+$sql_edit = "select * from irp where id = ".$id." and deleted_at is NULL";
+$query_irp = mysqli_query($conx, $sql_edit) or die(mysqli_error($conx));
+$irp = mysqli_fetch_object($query_irp);
 ?>
 <div class="content">
   <div class="container-fluid">
@@ -15,7 +13,7 @@ $terampil = mysqli_fetch_object($query_terampil);
         <ul class="nav nav-pills nav-justified thumbnail" id="myTab">
           <li>
             <a href="#biodata" role="tab" data-toggle="tab">
-              <h4 class="list-group-item-heading">Keterampilan dan Finance</h4>
+              <h4 class="list-group-item-heading">IRP</h4>
               <small class="list-group-item-text">Berisi data Pelatiahn atau Workshop yang pernah diikuti</small>
             </a>
           </li>
@@ -28,9 +26,9 @@ $terampil = mysqli_fetch_object($query_terampil);
             <div class="card">
 
               <div class="content">
-                <form method="POST" action="page/terampil/update.php" accept-charset="UTF-8" class="" id="update_terampil" role="form" enctype="multipart/form-data">
+                <form method="POST" action="page/irp/update.php" accept-charset="UTF-8" class="" id="tambah_terampil" role="form" enctype="multipart/form-data">
                   <input type="hidden" name="step" value="terampil">
-                  <input type="hidden" name="id" value="<?php echo $id ?>">
+                  <input type="hidden" name="id_irp" value="<?=$id; ?>">
                     <div class="row">
 
                       <div class="col-md-12">
@@ -40,7 +38,7 @@ $terampil = mysqli_fetch_object($query_terampil);
                             <?php
                               while ($biodata = mysqli_fetch_object($query)) {
                                 ?>
-                                <option <?php if($biodata->nomor_identifikasi == $terampil->nomor_identifikasi){echo "selected";} ?> value="<?php echo $biodata->nomor_identifikasi ?>"><?php echo $biodata->nomor_identifikasi ?> - <?php echo ucwords($biodata->nama) ?></option>
+                                <option value="<?php echo $biodata->nomor_identifikasi ?>"><?php echo $biodata->nomor_identifikasi ?> - <?php echo ucwords($biodata->nama) ?></option>
                                 <?php
                               }
                              ?>
@@ -48,23 +46,26 @@ $terampil = mysqli_fetch_object($query_terampil);
                         </div>
 
                         <div class="form-group">
-                          <label>Pelatihan keterampilan yang didapatkan  <span class="text-danger">*</span></label>
-                          <textarea name="pelatihan_keterampilan" class="form-control" placeholder="Pelatihan keterampilan yang didapatkan " ><?php echo $terampil->pelatihan_keterampilan ?></textarea>
+                          <label>Buat IRP?<span class="text-danger">*</span></label>
+                          <select name="buat_irp" id="" class="form-control">
+                            <option value="ya">Ya</option>
+                            <option value="tidak">Tidak</option>
+                          </select>
                         </div>
 
                         <div class="form-group">
-                          <label>Bantuan finance yang didapatkan <span class="text-danger">*</span></label>
-                          <textarea name="bantuan_finance" class="form-control" placeholder="Bantuan finance yang didapatkan " ><?php echo $terampil->bantuan_finance ?></textarea>
+                          <label>Alasan tidak dibuatkan IRP <span class="text-danger">*</span></label>
+                          <textarea name="alasan_tidak_buat" class="form-control" placeholder="Alasan Tidak dibuat IRP " ><?php echo $irp->alasan_tidak_buat ?></textarea>
                         </div>
 
                         <div class="form-group">
-                          <label>Hasil monitoring pendapatan* <span class="text-danger">*</span></label>
-                          <textarea name="hasil_monitoring_pendapatan" class="form-control" placeholder="Hasil monitoring pendapatan* " ><?php echo $terampil->hasil_monitoring_pendapatan ?></textarea>
+                          <label>Pelatihan Ortu untuk Melaksanakan IRP <span class="text-danger">*</span></label>
+                          <textarea name="pelatihan_ortu" class="form-control" placeholder="Pelatihan Orangtua untuk Melaksanakan IRP " ><?php echo $irp->pelatihan_ortu ?></textarea>
                         </div>
 
                         <div class="form-group">
-                          <label>Petugas <span class="text-danger">*</span></label>
-                          <input type="text" name="petugas" class="form-control" placeholder="Nama Petugas " value="<?php echo $terampil->petugas ?>" >
+                          <label>IRP Dibuat Oleh <span class="text-danger">*</span></label>
+                          <input type="text" name="dibuat_oleh" class="form-control" placeholder="Nama Petugas " value="<?php echo $irp->dibuat_oleh ?>" >
                         </div>
 
                       </div>

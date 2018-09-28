@@ -1,65 +1,82 @@
 <?php
-$sql = "
-SELECT irp.id, biodata.nama, irp.nomor_identifikasi, irp.buat_irp, irp.dibuat_oleh, irp.alasan_tidak_buat, irp.pelatihan_ortu
-FROM irp INNER JOIN biodata ON irp.nomor_identifikasi = biodata.nomor_identifikasi
-WHERE irp.deleted_at IS NULL ORDER BY irp.id DESC
-";
-
+$id = $_GET['id'];
+$sql = "select nomor_identifikasi, nama from biodata where biodata.id = ".$id." ".$is_admin_kecamatan." and deleted_at is NULL order by nama asc";
 $query = mysqli_query($conx, $sql) or die(mysqli_error($conx));
-// var_dump($query);exit();
+$biodata = mysqli_fetch_object($query);
+$sql_edit = "select * from irp where id = ".$id." and deleted_at is NULL";
+$query_irp = mysqli_query($conx, $sql_edit) or die(mysqli_error($conx));
+$irp = mysqli_fetch_object($query_irp);
 ?>
-
 <div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="header">
-                        <h4 class="title">IRP <a href="?act=tambah-irp" class="btn btn-success btn-xs"><i class="fa fa-plus"></i>Tambah</a></h4>
-                        <p class="category"></p>
-                    </div>
-                    <div class="content table-responsive table-full-width">
-                        <table class="table table-hover table-striped" id="tamu_internasionalTable">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Nama dan Nomor Identifikasi</th>
-                                    <th>Keterangan</th>
-                                    <th>Action</th>
-                                </tr>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <ul class="nav nav-pills nav-justified thumbnail" id="myTab">
+          <li>
+            <a href="#biodata" role="tab" data-toggle="tab">
+              <h4 class="list-group-item-heading">IRP</h4>
+              <small class="list-group-item-text">Berisi data Pelatiahn atau Workshop yang pernah diikuti</small>
+            </a>
+          </li>
 
-                            </thead>
-                            <tbody>
-                                <?php
-                                $i=1;
-                                while ($irp = mysqli_fetch_object($query)) {
-
-                                    ?>
-                                    <tr class="danger">
-                                        <td><?php echo $i++ ?></td>
-                                        <td><?php echo $irp->nomor_identifikasi." - ".$irp->nama ?></td>
-                                        <td><?php echo $irp->buat_irp." Oleh: ".$irp->dibuat_oleh ?></td>
-                                        <td>
-                                          <a href="?act=edit-irp&id=<?php echo $irp->id ?>" class="btn btn-info btn-simple btn-xs"><i class="fa fa-edit"></i></a>
-                                          <a href="#" class="btn btn-danger btn-simple btn-xs" data-toggle="modal" data-target="#hapusTerampil" date-cat="irp" data-name="<?php echo $irp->nama ?>" data-id="<?php echo $irp->id ?>"><i class="fa fa-times"></i></a>
-                                        </td>
-                                    </tr>
-                                    <?php
-                                }
-                                 ?>
+        </ul>
 
 
+        <div class="tab-content">
+          <div class="tab-pane active" id="biodata">
+            <div class="card">
 
-                                </tbody>
-
-                            </table>
-
+              <div class="content">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Nomor Identifikasi <span class="text-danger">* </span></label>
+                          <?php echo $biodata->nomor_identifikasi ?> - <?php echo ucwords($biodata->nama) ?>
                         </div>
+
+                        <div class="form-group">
+                          <label>Buat IRP? <span class="text-danger"><?php echo $irp->buat_irp ?></span></label>
+                        </div>
+                        <table class="table">
+                          <tr>
+                            <td>Alasan tidak dibuatkan IRP </td>
+                            <td>: <?php echo $irp->alasan_tidak_buat ?></td>
+                          </tr>
+                          <tr>
+                            <td>Pelatihan Ortu untuk Melaksanakan IRP </td>
+                            <td>: <?php echo $irp->pelatihan_ortu ?></td>
+                          </tr>
+                          <tr>
+                            <td>IRP Dibuat Oleh </td>
+                            <td>: <?php echo $irp->dibuat_oleh ?></td>
+                          </tr>
+                        </table>
+
+                      </div>
+
                     </div>
-                </div>
+
+
+                  </div>
+
+
+                  <div class="content">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <a href="?act=irp"><button type="submit" class="btn btn-info btn-fill pull-right" >Kembali</button></a>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
             </div>
+          </div>
+
         </div>
+
+
+      </div>
     </div>
-
-
-</div>
+  </div>
