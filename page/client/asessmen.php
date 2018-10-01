@@ -48,7 +48,7 @@ $detail_wali = json_decode($biodata->detail_wali);
                 <h4 class="title">Biodata Penghuni</h4>
               </div>
               <div class="content">
-                <form method="POST" action="page/client/update_biodata.php" accept-charset="UTF-8" class="" id="tambah_user" role="form">
+                <form method="POST" action="page/client/update_biodata.php" accept-charset="UTF-8" class="" id="tambah_user" role="form" enctype="multipart/form-data">
                   <input type="hidden" name="step" value="biodata">
                   <input type="hidden" name="id" value="<?php echo $biodata->id; ?>">
 
@@ -452,6 +452,27 @@ $detail_wali = json_decode($biodata->detail_wali);
                                   <option <?php if($detail_wali->pendidikan_wali == 'tidak_sekolah'){echo "selected";} ?>  value="tidak_sekolah">Tidak Sekolah</option>
                                 </select>
                               </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label for="">Upload KTP<span class="text-danger">*</span>
+                                <?php if (!is_null($biodata->file_ktp)) {
+                                ?>
+                                ( <a href="<?php echo $app_url."/uploads/ktp/".$biodata->file_ktp ?>" target="_blank">lihat</a> )
+                                <?php
+                              } ?></label>
+                              <input class="form-control" name="ktp" type="file"/>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="">Upload KK<span class="text-danger">*</span>
+                                <?php if(!is_null($biodata->file_kk)){
+                                  ?>
+                                  ( <a href="<?php echo $app_url."/uploads/kk/".$biodata->file_kk ?>" target="_blank">lihat</a> )
+                                  <?php
+                                } ?>
+                               </label>
+                              <input class="form-control" name="kk" type="file"/>
                             </div>
                           </div>
                         </div>

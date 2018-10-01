@@ -23,6 +23,16 @@ $detail_ibu = json_encode(array("nama_ibu"=>$biodata->nama_ibu, "pekerjaan_ibu"=
 
 $detail_wali = json_encode(array("nama_wali"=>$biodata->nama_wali, "pekerjaan_wali"=>$biodata->pekerjaan_wali, "pendidikan_wali"=>$biodata->pendidikan_wali));
 
+$update_file = null;
+
+if(isset($_FILES['kk']) && $_FILES['kk']["name"] != ''){
+	$update_file .= ", file_kk = '".uploadFile("kk", $_FILES['kk'])."' ";
+}
+
+if(isset($_FILES['ktp']) && $_FILES['ktp']["name"] != ''){
+	$update_file .= ", file_ktp = '".uploadFile("ktp", $_FILES['ktp'])."' ";
+}
+
 $sql = "update biodata set 
 nomor_identifikasi = '".$biodata->nomor_identifikasi."', 
 id_klien_lv = '".$biodata->klien_lv."',
@@ -48,8 +58,10 @@ detail_pendidikan = '".$detail_pendidikan."',
 detail_profesi = '".$detail_profesi."',
 detail_ayah = '".$detail_ayah."',
 detail_ibu = '".$detail_ibu."',
-detail_wali = '".$detail_wali."' 
+detail_wali = '".$detail_wali."' ".$update_file." 
 where id = $biodata->id";
+
+// var_dump($sql);exit();
 
 // $query = mysqli_query($conx, $sql) or die(mysqli_error());
 
@@ -63,3 +75,47 @@ mysqli_close($conx);
 header("Location:".$app_url."/?act=asessmen&id=".$biodata->id);
 exit();
  ?>
+
+ <?php 
+function uploadFile($jenis_file, $file){
+	$target_dir = __DIR__."/../../uploads/".$jenis_file."/";
+	$file_type = getFileType($file["type"]);
+	if (is_null($file_type)) {
+		return null;
+	}
+	$nama_file = md5($file["name"].uniqid(rand())).$file_type;
+	$tmp_file = $file["tmp_name"];
+	$proses_upload = move_uploaded_file($tmp_file, $target_dir.$nama_file);
+
+	if ($proses_upload) {
+		return $nama_file;
+	}else{
+		return null;
+	}
+
+}
+
+function getFileType($file_type){
+	$type = null;
+	switch ($file_type) {
+		case 'image/jpeg':
+			$type = ".jpeg";
+			break;
+		case 'image/jpg':
+			$type = ".jpg";
+			break;
+		case 'image/png':
+			$type = ".png";
+			break;
+		
+		default:
+			$type = null;
+			break;
+	}
+
+	return $type;
+}
+
+
+
+  ?>

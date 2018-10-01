@@ -8,6 +8,8 @@ header("Location: ". $app_url); /* Redirect browser */
 exit();
 }
 
+// var_dump(uploadFile("kk", $_FILES["kk"])." |  ".uploadFile("ktp", $_FILES["ktp"]));exit();
+
 $biodata = (object)$_POST;
 
 $hp1 = json_encode(array("nomor"=>$biodata->hp1, "pemilik"=>$biodata->pemilik_hp1));
@@ -48,7 +50,9 @@ detail_pendidikan,
 detail_profesi,
 detail_ayah,
 detail_ibu,
-detail_wali) values(
+detail_wali,
+file_kk,
+file_ktp) values(
 	'".$biodata->nomor_identifikasi."',
 	'".$biodata->klien_lv."',
 	'".$biodata->nama."',
@@ -73,7 +77,9 @@ detail_wali) values(
 	'".$detail_profesi."',
 	'".$detail_ayah."',
 	'".$detail_ibu."',
-	'".$detail_wali."'
+	'".$detail_wali."',
+	'".uploadFile("kk", $_FILES["kk"])."',
+	'".uploadFile("ktp", $_FILES["ktp"])."'
 	)";
 
 // $query = mysqli_query($conx, $sql) or die(mysqli_error());
@@ -88,3 +94,47 @@ mysqli_close($conx);
 header("Location:".$app_url."/?act=asessmen&id=".$last_id."#tab_berkas");
 exit();
  ?>
+
+ <?php 
+function uploadFile($jenis_file, $file){
+	$target_dir = __DIR__."/../../uploads/".$jenis_file."/";
+	$file_type = getFileType($file["type"]);
+	if (is_null($file_type)) {
+		return null;
+	}
+	$nama_file = md5($file["name"].uniqid(rand())).$file_type;
+	$tmp_file = $file["tmp_name"];
+	$proses_upload = move_uploaded_file($tmp_file, $target_dir.$nama_file);
+
+	if ($proses_upload) {
+		return $nama_file;
+	}else{
+		return null;
+	}
+
+}
+
+function getFileType($file_type){
+	$type = null;
+	switch ($file_type) {
+		case 'image/jpeg':
+			$type = ".jpeg";
+			break;
+		case 'image/jpg':
+			$type = ".jpg";
+			break;
+		case 'image/png':
+			$type = ".png";
+			break;
+		
+		default:
+			$type = null;
+			break;
+	}
+
+	return $type;
+}
+
+
+
+  ?>

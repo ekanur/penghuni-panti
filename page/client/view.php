@@ -111,7 +111,7 @@ $detail_wali = json_decode($biodata->detail_wali);
                             <?php if($detail_profesi->pendidikan_kerja == 'non_formal'){echo "Non Formal";} ?>
                             <?php if($detail_profesi->pendidikan_kerja == 'tidak_sekolah'){echo "Tidak Sekolah";} ?>
                           </td>
-                          <td><?php echo $detail_profesi->Keterampilan ?></td>
+                          <td><?php echo $detail_profesi->keterampilan ?></td>
                           <td><?php echo $detail_profesi->minat ?></td>
                         </tr>
                       </table>

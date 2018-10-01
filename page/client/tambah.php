@@ -446,6 +446,16 @@
                               </div>
                             </div>
                           </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label for="">Upload KTP<span class="text-danger">*</span></label>
+                              <input class="form-control" name="ktp" type="file"/>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="">Upload KK<span class="text-danger">*</span></label>
+                              <input class="form-control" name="kk" type="file"/>
+                            </div>
+                          </div>
                         </div>
 
 

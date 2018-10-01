@@ -31,7 +31,7 @@ if(0==$count_asessmen){
 }
 
 mysqli_close($conx);
-header("Location:".$app_url."/?act=asessmen&id=".$asessmen->biodata_id."#tab_berkas");
+header("Location:".$app_url."/?act=client");
 exit();
 ?>
 
